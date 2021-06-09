@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statustempattinggal">
+        <item>Milik Sendiri</item>
+        <item>Sewa</item>
+        <item>Rumah Dinas</item>
+        <item>Milik Orang tua</item>
+    </string-array>
+</resources>

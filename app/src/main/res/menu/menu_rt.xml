@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homebar"
+        android:title="DashBoard"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/pembayaran"
+        android:title="Tagihan"
+        android:icon="@drawable/file_text"/>
+</menu>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/eko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#41C88E"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageButton
+            android:id="@+id/backbuttwarga"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chevron_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="Edit Profil"
+            android:textColor="#F3F0F0"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="203.09dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:background="#41C88E"
+        android:orientation="horizontal" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image3"
+        android:layout_width="wrap_content"
+        android:layout_height="167dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/dota2iklan"
+        app:civ_border_color="#0B0B0B"
+        app:civ_border_width="2dp" />
+
+    <ImageButton
+        android:id="@+id/ganti"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="222dp"
+        android:background="@drawable/bgtwo"
+        android:src="@drawable/ic_menu_camera" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_image3"
+        android:layout_marginBottom="15dp"
+     />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nulls"
+        android:layout_width="380dp"
+        android:layout_height="311dp"
+        android:layout_below="@+id/username"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Edit Email"
+                app:hintTextColor="@color/grey_100_">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="faafa@gmail.com" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editnamalengkap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Edit Nama Lengkap"
+                app:hintTextColor="@color/grey_100_">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:text="jamaludin" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Jenis Kelamin"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/jeniskelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editnomerhp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Edit No Hp"
+                app:hintTextColor="@color/grey_100_">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hk"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:text="098989888" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Agama"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/agama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Tempat Lahir"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/edttempatlahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edittanggallahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Edit Tanggal lahir"
+                app:hintTextColor="@color/grey_100_">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_menu_send"
+                    android:focusable="false"
+                    android:fontFamily="@font/hk"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:text="DD/MM/YY" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Status Pernikahan"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/editstatuspernikahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Pekerjaan"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/editpekerjaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit Status Tempat Tinggal"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/statustempattinggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                app:hintTextColor="@color/grey_100_">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Edit"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/editpendidikanterakhir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editalamatlengkap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Edit Alamat"
+                app:hintTextColor="@color/grey_100_">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textPostalAddress"
+                    android:maxLength="25"
+                    android:maxLines="2"
+                    android:text="jamaludin" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nulls"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="23dp"
+        android:text="Simpan" />
+
+    <ProgressBar
+        android:id="@+id/loadding"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/eko"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="100dp"/>
+
+</RelativeLayout>

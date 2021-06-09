@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Umur">
+        <item>Masukan Umur Anggota Keluarga</item>
+        <item>0-5 Tahun</item>
+        <item>5-12 Tahun</item>
+        <item>12-16 Tahun</item>
+        <item>17 Tahun Keatas</item>
+    </string-array>
+</resources>

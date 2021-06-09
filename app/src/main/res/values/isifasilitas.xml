@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kerusakan_array">
+        <item>RUMAH</item>
+        <item>FASILITAS UMUM</item>
+    </string-array>
+</resources>

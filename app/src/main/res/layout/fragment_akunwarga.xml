@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="203.09dp"
+        android:background="#41C88E"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:orientation="horizontal" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="167dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/dota2iklan"
+        app:civ_border_color="#0B0B0B"
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_below="@+id/profile_image"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/hk"
+        android:gravity="center"
+        android:textSize="30sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="379dp"
+
+        android:layout_below="@+id/username"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bglaporansatu"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Desa" />
+
+                <TextView
+                    android:id="@+id/namadesa"
+                    android:fontFamily="@font/hk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:text="Nama Desa" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NIK"  />
+
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/nik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="NIK" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/namalengkap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Nama Lengkap" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Email" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/jeniskelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Jenis Kelamin" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Hp"  />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/nohp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Nomor Hp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Agama" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/agama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Agama" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tempat Lahir"/>
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tempatlahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Tempat Lahir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                    android:text="Tanggal lahir" />
+
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/tanggallahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Tanggal lahir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status Pernikahan" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/statuspernikahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Status Pernikahan" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pekerjaan"/>
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/pekerjaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Pekerjaan" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pendidikan Terakhir"  />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/pendidikanterakhir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Pendidikan Terakhir" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Status Tempat Tinggal" />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/statustempattinggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Status Tempat Tinggal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgshape"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/hk"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat  Warga"  />
+                <TextView
+                    android:fontFamily="@font/hk"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/alamlengkap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:text="Alamat  Warga" />
+            </LinearLayout>
+
+                </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/data"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/edit1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bgtwo"
+            android:text="Edit Profil"
+            android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bgtwo"
+            android:text="Kartu Keluarga"
+            android:theme="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:visibility="visible" />
+    </LinearLayout>
+
+
+</RelativeLayout>

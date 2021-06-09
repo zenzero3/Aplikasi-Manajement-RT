@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:background="@drawable/bgnice"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/onlineimage"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/x"
+            app:civ_border_color="@color/ms_black"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/onlineimage"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="13dp"
+
+            android:layout_marginEnd="18dp"
+            android:fontFamily="@font/hk"
+            android:text="Nama User"
+            android:textSize="10sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="41dp"
+            android:src="@drawable/green" />
+    </RelativeLayout>
+
+
+</LinearLayout>

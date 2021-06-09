@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/homenavbar">
+
+    <fragment
+        android:id="@+id/homenavbar"
+        android:name="sistem.Smarta.grandcikarangcity2.Homefragment"
+        android:label="DashBoard"
+        tools:layout="@layout/homewarga" />
+
+    <fragment
+        android:id="@+id/info"
+        android:name="sistem.Smarta.grandcikarangcity2.Infofragment"
+        android:label="Histori"
+        tools:layout="@layout/infofragment" />
+
+    <fragment
+        android:id="@+id/usernavbar"
+        android:name="sistem.Smarta.grandcikarangcity2.Userfragment"
+        android:label="User"
+        tools:layout="@layout/userfragment" />
+</navigation>

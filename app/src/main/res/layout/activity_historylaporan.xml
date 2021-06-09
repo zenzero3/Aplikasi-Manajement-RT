@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".historylaporan" >
+
+    <LinearLayout
+        android:id="@+id/eko"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#41C88E"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageButton
+            android:id="@+id/backbutt"
+            android:layout_width="47dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chevron_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:ems="9"
+            android:fontFamily="@font/hk"
+            android:gravity="center"
+            android:text="Histori Laporan"
+            android:textColor="#F3F0F0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dwiko"
+        android:layout_below="@+id/eko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E7F1F0"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/hk"
+            android:gravity="center"
+            android:text="Tanggal"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/hk"
+            android:gravity="center"
+            android:text="Deskripsi Masalah"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/hk"
+            android:gravity="center"
+            android:text="Status"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/dwiko"
+        android:id="@+id/dataisi"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="297dp"
+        android:layout_height="287dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="190dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"
+        android:src="@drawable/icnofound" />
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="Pengaju">
+        <item>Silahkan Pilih Status Pengajuan</item>
+        <item>Pengajuan Sendiri</item>
+        <item>Perwakilan Pengajuan</item>
+    </string-array>
+</resources>

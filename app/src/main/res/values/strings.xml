@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MANAGEMENT KABUPATEN SAMBAS </string>
+
+
+    <string name="bb">open</string>
+
+    <string name="cc">close</string>
+    <string name="app_version">Version</string>
+
+    <string name="version_unknown">Unknown</string>
+    <string name="menu_name">Pulsa</string>
+    <string name="menu_misc">Fitur Lainnya</string>
+    <string name="mapkey" translatable="false">AIzaSyAT5yo3Fp6o3G7r6ueUeL-3YejNzMsH2WM</string>
+
+    <string name="title_activity_historylaporan">historylaporan</string>
+    <!-- Strings used for fragments for navigation -->
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Ini Isi 1</string>
+    <string name="title_activity_wargaregisterone">Wargaregisterone</string>
+    <string name="title_activity_iuranwarga">iuranwarga</string>
+    <string name="less"><![CDATA[<< Less]]></string>
+    <string name="title_activity_polling__button">Polling_Button</string>
+    <!-- Strings used for fragments for navigation -->
+
+</resources>

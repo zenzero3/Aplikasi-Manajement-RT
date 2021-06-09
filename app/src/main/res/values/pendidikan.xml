@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pendidikan">
+        <item>Tidak Sekolah</item>
+        <item>SD</item>
+        <item>SMP</item>
+        <item>SMA</item>
+        <item>SMK</item>
+        <item>DIPLOMA</item>
+        <item>SARJANA</item>
+    </string-array>
+</resources>

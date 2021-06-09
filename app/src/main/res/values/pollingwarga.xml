@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pollingwarga1">
+        <item>Pilih Kategori Polling</item>
+        <item>Adat</item>
+        <item>Agama</item>
+        <item>Hiburan</item>
+        <item>Kebersihan</item>
+        <item>Keamannan</item>
+        <item>Sosial</item>
+    </string-array>
+</resources>

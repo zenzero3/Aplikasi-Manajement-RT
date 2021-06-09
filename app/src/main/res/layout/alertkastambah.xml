@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_gravity="center"
+    android:background="@drawable/layout_bg">
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Tambah Kas RT" />
+
+        <TextView
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Dana" />
+
+        <EditText
+            android:id="@+id/name"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Masukan nama Dana"
+            />
+
+        <TextView
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="12sp"
+            android:maxLength="50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nominal" />
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/nominalkas"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="12sp"
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Masukan Nominal Dana"
+            />
+
+        <Button
+            android:id="@+id/button4"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgpolling"
+            android:text="Tambah Dana" />
+    </LinearLayout>
+</RelativeLayout>

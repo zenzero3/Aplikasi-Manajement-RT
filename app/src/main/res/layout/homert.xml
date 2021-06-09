@@ -1,0 +1,1260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_rthome">
+
+
+    <ImageView
+        android:id="@+id/backing"
+        android:layout_width="50dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:src="@drawable/chevron_left" />
+
+    <ImageView
+        android:id="@+id/logos2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/backing"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_cikarang" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_below="@id/logos2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="5dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView5"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bgtwo"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/namart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="12"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="left"
+                        android:textColor="#393939"
+                        android:text="Undangan Warga"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/wa"
+                        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bgregisterbutton"
+                        android:backgroundTintMode="src_atop"
+                        android:gravity="center"
+                        android:text="Undang Warga"
+                        android:textAlignment="center"
+                        android:textColor="#6A4207"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="#590C0C0C"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/iuran"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_dcfff0"
+                            android:src="@drawable/ic_money"
+                            android:theme="@style/Widget.AppCompat.ImageButton" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="10sp"
+                            android:textColor="#393939"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Iuran" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/suratrt"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_ff6db"
+                            android:src="@drawable/ic_bulu" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:textColor="#393939"
+                            android:text="Surat RT" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/pengu"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_rectangelgreen"
+                            android:src="@drawable/ic_slack" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:text="Pengurus" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageButton
+                            android:id="@+id/laporanwarga"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_redi"
+                            android:src="@drawable/ic_atten"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:text="Laporan warga"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/pollingwarga"
+                            android:layout_width="60dp"
+                            android:layout_height="59dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_rectangelpink"
+                            android:src="@drawable/ic_align_left" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:text=" Polling Warga"
+                            android:textAlignment="center"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,SmallSp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/kasrt"
+                            android:layout_width="60dp"
+                            android:layout_height="59dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_maroon"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_jungkat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:text="Kas RT"
+                            android:textAlignment="center"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,SmallSp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/historysurrat"
+                            android:layout_width="60dp"
+                            android:layout_height="59dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/ic_brown"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_histor" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:text="Histori Surat"
+                            android:textAlignment="center"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,SmallSp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/daftarlaporan"
+                            android:layout_width="60dp"
+                            android:layout_height="59dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/green"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_list_alt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:text="Laporan Warga "
+                            android:textAlignment="center"
+                            android:textColor="#393939"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,SmallSp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Beritahu Bahwa Tidak Di Rumah"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="List Rumah Kosong"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Tetangga RT"
+                    android:textSize="15sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/onlinbro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bgtwo"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Top Up Pembayaran" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bgtwo">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/pullsa"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/pulsa"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/menu_name"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/paketdata"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/signal"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Paket Data"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/tagihanlistrisk"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/tagihan_listrik" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tagihan Listrik"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/bpjs"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/tagihan_bpjs"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tagihan BPJS"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/pdam"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/tagihan_air" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tagihan PDAM"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/telepon"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/tagihan_telpon"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Telepon Pascabayar"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/wifi"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/wifi" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Voucher Wifi.Id"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/app"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/app"
+                                        android:visibility="visible" />
+
+                                    <TextView
+                                        android:id="@+id/more"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="More"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        android:visibility="visible"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                    <ImageButton
+                                        android:id="@+id/less"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/chevron_up"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/less_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Less"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        android:visibility="gone"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/panelview1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/gamevoucher"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/game" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Voucher Game"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/emoney"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/tagihan_multi1"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="E-Money"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/tokenlistrik"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/token_pln" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Token Listrik"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/etoll"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/etoll" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="E-Toll"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/garena"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@android:color/transparent"
+                                        android:src="@drawable/freefire" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Diamond Free Fire"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/googleplay"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/gplay" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Voucher Google Play"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/asuransi"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/asuransi" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Asuransi"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:scaleType="center"
+                                        android:src="@drawable/tagihan_tv" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tagihan TV"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/pulsa" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Pulsa Sms Telpon"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/itunes"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/itunes"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Itunes Gift Card"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/zakat"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:scaleType="centerInside"
+                                        android:src="@drawable/tagihan_multi" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Zakat"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/multiance"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/transfer" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Multifinance"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:id="@+id/pubgi"
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/pubg" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="PUBG Mobile UC"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="155dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="20dp"
+                                android:text="@string/menu_misc"
+                                android:textAllCaps="true"
+                                android:textColor="#656565"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal"
+                                android:weightSum="4">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/icons_tags"
+                                        tools:ignore="ContentDescription" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Harga Produk"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageButton
+                                        android:layout_width="70dp"
+                                        android:layout_height="70dp"
+                                        android:background="@drawable/round_button"
+                                        android:src="@drawable/icons_info" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Tentang Kami"
+                                        android:textAlignment="center"
+                                        android:textColor="#393939"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"
+                                        tools:ignore="HardcodedText,SmallSp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView8"
+        android:src="@drawable/ic_digita" />
+
+</RelativeLayout>

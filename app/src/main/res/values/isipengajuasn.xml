@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pengajuan">
+        <item>Silahkan Pilih Surat Pengajuan</item>
+        <item>Pengajuan Surat Belum Menikah</item>
+        <item>Pengajuan Surat Keterangan Domisili</item>
+        <item>Pengajuan Surat Domisili Usaha</item>
+        <item>Pengajuan Surat Keterangan Kelahiran</item>
+        <item>Pengajuan Surat Pindah Rumah</item>
+        <item>Pengajuan Surat Tidak Mampu</item>
+        <item>Pengajuan Surat Keterangan Warga</item>
+    </string-array>
+</resources>

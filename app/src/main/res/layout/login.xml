@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5FB"
+  >
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="221dp"
+        android:layout_height="190dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="85dp"
+        android:src="@drawable/sambasa" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/hk"
+        android:gravity="center"
+        android:text="Aplikasi Management Kabupaten SAMBAS"
+        android:textColor="@color/colorbackld"
+        android:textSize="16sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="12dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/bgtwo"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="14sp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukan Username"
+                            android:fontFamily="@font/poppins_bold"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/passworde"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:background="@drawable/bgtwo"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukan password"
+                            android:fontFamily="@font/poppins_bold"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonlogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bgbutton"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Login"
+                    android:textColor="#FBFBFB"
+                    android:theme="@style/Animation.Design.BottomSheetDialog" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="168dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="#16000000"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="53dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="OR"
+                        android:textSize="19sp" />
+
+                    <LinearLayout
+                        android:layout_width="168dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="#16000000"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bgregisterbutton"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Register"
+                    android:textColor="#FADA10"
+                    android:theme="@style/Animation.Design.BottomSheetDialog" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

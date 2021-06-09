@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/eko"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#41C88E"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <ImageButton
+            android:id="@+id/backbutt"
+            android:layout_width="47dp"
+            android:layout_height="37dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/chevron_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="15dp"
+            android:ems="9"
+            android:fontFamily="@font/hk"
+            android:gravity="center"
+            android:text="Edit User"
+            android:textColor="#F3F0F0"
+            android:textSize="18sp"
+            android:textStyle="bold"
+
+            />
+
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/proiles"
+        android:layout_width="150dp"
+        android:layout_height="162dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/user"
+        app:civ_border_color="@color/ms_black"
+        app:civ_border_width="2dp" />
+
+    <ImageButton
+        android:id="@+id/tambahgambar"
+        android:layout_width="56dp"
+        android:layout_height="42dp"
+        android:layout_alignBottom="@+id/proiles"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bgtwo"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_menu_camera"
+        android:theme="@style/Widget.AppCompat.ImageButton" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/proiles"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/useredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Email">
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textEmailAddress"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Nama Lengkap">
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Username">
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/userpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/bgtwo"
+                android:hint="Password"
+                app:passwordToggleEnabled="true">
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hk"
+                    android:inputType="textPassword"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usertelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bgtwo"
+                android:hint="No Hp (+62)">
+                >
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/hk"
+                    android:inputType="phone"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/simpen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/icokbg"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Simpan"
+                android:textColor="#094D47"
+                android:theme="@style/Widget.AppCompat.Button.Borderless.Colored" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

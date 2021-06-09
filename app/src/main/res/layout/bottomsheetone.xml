@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  android:background="@drawable/bg2"
+    >
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/Widget.MaterialComponents.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="12dp"
+        android:drawableRight="@drawable/x"
+        android:drawableTintMode="multiply"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:text="Tambahkan Foto"
+        android:textColor="@color/ms_black"
+        android:textSize="19sp" />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cancel"
+        android:layout_marginBottom="15dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ambilhp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_menu_gallery"
+                android:visibility="visible" />
+
+
+            <TextView
+                android:layout_marginStart="15dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Galeri"
+                android:textColor="#0E0A0A"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#5B424242"
+            />
+
+        <LinearLayout
+            android:id="@+id/kamera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ImageButton
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_menu_camera"
+                android:visibility="visible" />
+            <TextView
+                android:layout_marginStart="15dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Foto"
+                android:textColor="#0E0A0A"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/bglaporansatu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:typeface="monospace"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Masalah"
+                        android:ems="10"
+                        />
+
+                    <TextView
+                        android:id="@+id/detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:text="Air mampet" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:typeface="monospace"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:gravity=""
+                        android:text="Jenis Fasilitas" />
+
+                    <TextView
+                        android:id="@+id/fasil"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content"
+                        android:text="Rumah" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:text="Perumahan"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:id="@+id/peru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="grand Cikarang City 2" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:typeface="monospace"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:text="Blok" />
+
+                    <TextView
+                        android:id="@+id/bli"
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VA" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:typeface="monospace"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:text="No Rumah" />
+
+                    <TextView
+                        android:id="@+id/nomer"
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="120" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:fontFamily="@font/hk"
+                        android:textSize="18sp"
+                        android:typeface="monospace"
+                        android:textColor="@color/colorbackld"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lokasi" />
+
+                    <TextView
+                        android:id="@+id/lokasi"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:gravity="left"
+                        android:fontFamily="@font/hk"
+                        android:textSize="14sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:text="Jl.Durian Runtuh Gang V Cikarang" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:fontFamily="@font/hk"
+                    android:textSize="18sp"
+                    android:typeface="monospace"
+                    android:textColor="@color/colorbackld"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:text="Lampirkan Foto" />
+
+                <LinearLayout
+                    android:layout_marginStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/getimage"
+                        android:layout_width="243dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:layout_gravity="center"
+                        android:id="@+id/imageButton2"
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        app:srcCompat="@android:drawable/ic_input_add" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pernikahan">
+        <item>Menikah</item>
+        <item>Lajang</item>
+        <item>Cerai</item>
+    </string-array>
+</resources>

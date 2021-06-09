@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/kanic"
+        android:layout_width="368dp"
+        android:layout_height="346dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="20dp"
+
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_panic_button"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/kanicdua"
+        android:layout_width="match_parent"
+        android:layout_height="421dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:scaleType="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/satuperingatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/kanic"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="40dp"
+        android:fontFamily="@font/abeezee"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Peringatan" />
+
+    <TextView
+        android:id="@+id/satuisiperingatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/satuperingatan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="0dp"
+        android:fontFamily="@font/abeezee"
+        android:gravity="center"
+        android:text="Gunakan fitur ini hanya dalam keadaan darurat"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="18dp"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/duaperingatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kanicdua"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="40dp"
+        android:fontFamily="@font/abeezee"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:text="Tetap Tenang"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/duaisiperingatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/duaperingatan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="0dp"
+        android:fontFamily="@font/abeezee"
+        android:gravity="center"
+        android:text="Pertolongan akan segera datang ketempat anda"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="18dp"
+        android:textStyle="normal"
+
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/tutupsalahkan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:textStyle="normal"
+        android:textSize="19sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/bgpanicbuttoncuy"
+        android:text="TUTUP"
+        android:textColor="#E91E63"
+        android:theme="@style/Animation.Design.BottomSheetDialog" />
+
+</RelativeLayout>

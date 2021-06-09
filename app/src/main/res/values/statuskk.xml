@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statuskk">
+        <item>Masukan Status Dalam Kartu Keluarga</item>
+        <item>Kepala Keluarga</item>
+        <item>Ibu</item>
+        <item>Anak</item>
+        <item>Menantu</item>
+        <item>Saudara</item>
+    </string-array>
+</resources>

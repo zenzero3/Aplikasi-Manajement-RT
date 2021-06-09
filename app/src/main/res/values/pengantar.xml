@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pengantar">
+        <item>Silahkan Pilih Surat Pengantar</item>
+        <item>Surat Belum Menikah</item>
+        <item>Surat Keterangan Domisili</item>
+        <item>Surat Domisili Usaha</item>
+        <item>Surat Keterangan Kelahiran</item>
+        <item>Surat Pindah Rumah</item>
+        <item>Surat Tidak Mampu</item>
+        <item>Surat Keterangan Warga</item>
+    </string-array>
+</resources>

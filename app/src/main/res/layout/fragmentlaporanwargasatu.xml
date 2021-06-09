@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_android___1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp"
+                android:layout_below="@+id/dapt"
+                android:layout_marginBottom="5dp"
+
+                android:fontFamily="@font/poppins_bold"
+                android:text="  Segera laporkan disini"
+                android:textColor="#FBFBFB"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dapt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Mengalami Kendala    \natau kerusakan"
+                android:textColor="#EFEAEA"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="568dp"
+                android:layout_below="@+id/dapt"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="194dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/bglaporansatu"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="49dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="#590C0C0C"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="15dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Masukan Judul Informasi"
+                        android:textColor="@color/ms_black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/namainfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/hk"
+                        android:hint="Masukan Judul Informasi"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="Deskripsi "
+                        android:textColor="@color/ms_black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/deskripsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/hk"
+                        android:hint="Masukan Nama Masalah"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+
+                        />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="Lokasi "
+                        android:textColor="@color/ms_black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/lokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/hk"
+                        android:hint="Detail Lokasi Informasi"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:textSize="14sp"
+
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

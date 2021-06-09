@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F2F5FB"
+    >
+
+    <LinearLayout
+        android:id="@+id/eko"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:background="#41C88E"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <ImageButton
+            android:id="@+id/backbutt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chevron_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:drawableLeft="@drawable/ic_settings_gears_1"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:text="Registrasi Ketua RT"
+            android:textColor="#F3F0F0"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/logos"
+        android:layout_width="263dp"
+        android:layout_height="164dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="68dp"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <TextView
+        android:id="@+id/inilho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eko"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="2dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="-2dp"
+        android:fontFamily="@font/crete_round"
+        android:gravity="center"
+        android:text="Registrasi Ketua RT Kabupaten Sambas"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_below="@+id/logos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#23A96F">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Lokasi RT"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20sp"
+                        android:textSize="19sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_bgnowexist"
+
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Provinsi"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/provinsi1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/kabupatenttampil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Kabupaten"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/kabupaten1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/kecamatantampil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Kecamatan"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/Kecamatan1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/kelurahantampil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Kelurahan atau Desa"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/kelurahan1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/desatampil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Alamat Dusun"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/desax"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:hint="(opsional) Dusun"
+                            android:maxLength="25"
+                            android:inputType="textCapSentences"
+                            android:paddingStart="5dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/kodepos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Kode Pos"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/pos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/pilihrtrrwtampil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="RT"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/rtx"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bgtwo"
+                                android:inputType="number"
+                                android:maxLines="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:gravity="center"
+                                android:text="RW"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/rwx"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bgtwo"
+                                android:inputType="number"
+                                android:maxLines="1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--data RT-->
+
+                <LinearLayout
+                    android:id="@+id/datart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#23A96F"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/crete_round"
+                        android:text="Data Ketua RT"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/datartdua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_bgnowexist"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="No KK"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/nokk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:hint="Masukan No KK"
+                            android:inputType="number"
+                            android:paddingStart="5dp"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="NIK"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/nik"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:hint="Masukan Nik"
+                            android:inputType="number"
+                            android:paddingStart="5dp"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Nama"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/lengkapnama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:hint="Masukan Nama Lengkap"
+                            android:inputType="textPersonName"
+                            android:paddingStart="5dp"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Jenis Kelamin"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/grupgender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:checked="false"
+                                android:onClick="checkButton"
+                                android:text="Laki-Laki" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:checked="false"
+                                android:onClick="checkButton"
+                                android:text="Perempuan" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Nomor HP"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/hanphone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:hint="Nomor HP (+62)"
+                            android:inputType="phone"
+                            android:paddingStart="5dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Email"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/mail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:hint="Masukan Email"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Agama"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/agam"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/lahiran"
+                            android:drawableEnd="@drawable/bawah"
+                            android:layout_marginEnd="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Tempat Lahir"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tanggallahir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:drawableRight="@drawable/ic_menu_send"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Tanggal Lahir"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tanggallahi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="12sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Status Pernikahan"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/kawin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Pekerjaan"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/kerjasono"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Status Dalam KK"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/kkstat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Pendidikan Terakhir"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/pendik"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Status Tempat Tinggal"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/statusrumah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Alamat Rumah"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/lamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/bgtwo"
+                            android:hint="Masukan Alamat"
+                            android:inputType="textPostalAddress"
+                            android:paddingStart="5dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="0.5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:gravity="center"
+                                android:text="Nomor Rumah"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/rumahno"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bgtwo"
+                                android:fontFamily="@font/poppins_bold"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:paddingStart="5dp"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:gravity="center"
+                                android:text="Blok Rumah"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/blok"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bgtwo"
+                                android:fontFamily="@font/poppins_bold"
+                                android:inputType="textPostalAddress"
+                                android:maxLines="1"
+                                android:paddingStart="5dp"
+                                android:textAllCaps="true"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <include
+
+                        layout="@layout/ktpkknpwp"></include>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/registerrt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@drawable/bgregisterbutton"
+                    android:text="DAFTAR"
+                    android:textColor="#FADA10"
+                    android:theme="@style/Animation.Design.BottomSheetDialog" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="450dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
