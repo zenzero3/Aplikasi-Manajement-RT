@@ -71,7 +71,7 @@ public class Login  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (masukke == 1){
-                    getpermission();
+                    getalertdialog();
                 }else if (masukke==2){
                     if (username.getText().toString().isEmpty()){
                         username.setError("Email Tidak boleh kosong");
@@ -106,10 +106,31 @@ public class Login  extends AppCompatActivity {
 
     }
 
+    private void getalertdialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Permission needed")
+                .setMessage("Aplikasi Memerlukan Perizinan Lokasi ")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions(Login.this,
+                                new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, lokasion);
+                        getpermission();
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+    }
+
     private void getinternalstorage() {
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
             requestinternal();
-            masukke = 2;
+
         }
         else {
             requestinternal();
@@ -187,6 +208,7 @@ public class Login  extends AppCompatActivity {
     private void getpermission() {
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
             if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                masukke = 2;
                getcall();
 
             }
@@ -346,10 +368,8 @@ public class Login  extends AppCompatActivity {
                         })
                         .create().show();
             }else {
-                getcall();
                 ActivityCompat.requestPermissions(this,
                         new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
-                Toast.makeText(getApplicationContext(),"hell",Toast.LENGTH_LONG).show();
 
             }
 
@@ -365,7 +385,7 @@ public class Login  extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 masukke = 2;
             } else {
-              getpermission();
+                Toast.makeText(getApplicationContext(),"aplikasi membutuhkan lokasi"+requestCode,Toast.LENGTH_LONG).show();
             }
         }
     }

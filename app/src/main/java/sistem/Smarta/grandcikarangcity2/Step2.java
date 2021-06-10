@@ -179,6 +179,8 @@ public class Step2 extends Fragment implements Step, BlockingStep, AdapterView.O
 
     @Override
     public void onSelected() {
+        lokasi = LocationServices.getFusedLocationProviderClient(getActivity());
+        dapat = getActivity().getSharedPreferences("laporan", Context.MODE_PRIVATE);
 
     }
 

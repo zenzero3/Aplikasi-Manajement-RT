@@ -3,6 +3,7 @@ package sistem.Smarta.grandcikarangcity2.rtpintar.warga.ButtonWartga.stepper;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -88,8 +90,7 @@ public class fragmentone extends Fragment implements Step, BlockingStep, Adapter
                 }
             });
         }else {
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
-            Toast.makeText(requireContext(),"error sistem",Toast.LENGTH_LONG).show();
+           getalert();
         }
     }
 
@@ -177,6 +178,27 @@ public class fragmentone extends Fragment implements Step, BlockingStep, Adapter
     @Override
     public void onSelected() {
 
+    }
+    private void getalert() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Permission needed")
+                .setMessage("Aplikasi Memerlukan Perizinan Lokasi ")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions(getActivity(),
+                                new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
+                        getlocation();
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        getActivity().finish();
+                    }
+                })
+                .create().show();
     }
 
     @Override

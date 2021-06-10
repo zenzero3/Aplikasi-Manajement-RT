@@ -2,6 +2,7 @@ package sistem.Smarta.grandcikarangcity2;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
         lokasi= LocationServices.getFusedLocationProviderClient(MainActivity.this);
-        getlocation();
+
     }
     public void onResume() {
         super.onResume();
@@ -85,50 +86,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("id_image",image);
         editor.apply();
 
-    }
-    private void getlocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            Task<Location> task = lokasi.getLastLocation();
-            task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(final Location location) {
-                    if (location != null){
-                        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                        try {
-                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                            namalokasi=addresses.get(0).getAddressLine(0);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-        }else {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},44);
-            Toast.makeText(getApplicationContext(),"Membutuhkan Allow permission Untuk access Laporan",Toast.LENGTH_LONG).show();
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                Task<Location> task = lokasi.getLastLocation();
-                task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(final Location location) {
-                        if (location != null){
-                            Geocoder geocoder = new Geocoder(getApplicationContext(),Locale.getDefault());
-                            try {
-                                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                                namalokasi=addresses.get(0).getAddressLine(0);
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-            }
-            else {
-                Toast.makeText(getApplicationContext(),"Membutuhkan Allow permission Untuk access Laporan",Toast.LENGTH_LONG).show();
-            }
-        }
     }
 
     private void getdata() {

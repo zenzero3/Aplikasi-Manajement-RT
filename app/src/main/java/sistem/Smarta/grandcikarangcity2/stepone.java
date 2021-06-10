@@ -3,6 +3,7 @@ package sistem.Smarta.grandcikarangcity2;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -45,6 +47,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+
+import sistem.Smarta.grandcikarangcity2.rt.Login;
 
 import static android.app.Activity.RESULT_CANCELED;
 
@@ -171,10 +175,31 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
                 });
             }
             else {
-                Toast.makeText(requireContext(),"Membutuhkan Allow permission Untuk access Laporan",Toast.LENGTH_LONG).show();
-                getActivity().finish();
+                    getalert();
             }
         }
+    }
+
+    private void getalert() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Permission needed")
+                .setMessage("Aplikasi Memerlukan Perizinan Lokasi ")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCompat.requestPermissions(getActivity(),
+                                new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
+                      getlocation();
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        getActivity().finish();
+                    }
+                })
+                .create().show();
     }
 
 
@@ -216,10 +241,6 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
         return null;
     }
 
-    @Override
-    public void onSelected() {
-        //update UI when selected
-    }
 
     @Override
     public void onError(@NonNull VerificationError error) {
@@ -292,6 +313,12 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        getlocation();
+    }
+    @Override
+    public void onSelected() {
+       getlocation();
+
     }
 
     @Override
