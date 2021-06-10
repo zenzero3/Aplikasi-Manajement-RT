@@ -111,7 +111,7 @@ public class Step2 extends Fragment implements Step, BlockingStep, AdapterView.O
     }
 
     private void getlokasi() {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             Task<Location> task = lokasi.getLastLocation();
             task.addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
@@ -143,7 +143,8 @@ public class Step2 extends Fragment implements Step, BlockingStep, AdapterView.O
             });
         }else {
              ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
-       Toast.makeText(requireContext(),"error sistem",Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},44);
+
         }
     }
 

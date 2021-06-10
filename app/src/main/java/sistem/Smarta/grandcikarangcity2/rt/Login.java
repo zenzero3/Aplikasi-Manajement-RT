@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class Login  extends AppCompatActivity {
     private int internal= 1;
     private int lokasion= 0;
     private int internet = 1;
-    private int Call= 1;
+    private int Call= 1,masukke=1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +70,23 @@ public class Login  extends AppCompatActivity {
         satu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().isEmpty()){
-                    username.setError("Email Tidak boleh kosong");
-                }else if (password.getText().toString().isEmpty()){
-                    password.setError("Password Tidak boleh Kosong");
-                }else {
-                    email.setErrorEnabled(false);
-                    passworde.setErrorEnabled(false);
-                    Logines();
+                if (masukke == 1){
+                    getpermission();
+                }else if (masukke==2){
+                    if (username.getText().toString().isEmpty()){
+                        username.setError("Email Tidak boleh kosong");
+                    }else if (password.getText().toString().isEmpty()){
+                        password.setError("Password Tidak boleh Kosong");
+                    }else {
+                        email.setErrorEnabled(false);
+                        passworde.setErrorEnabled(false);
+                        Logines();
+                    }
                 }
+                else {
+                    getpermission();
+                }
+
                  }
         });
 
@@ -85,8 +94,12 @@ public class Login  extends AppCompatActivity {
         dua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (masukke==2){
                 Intent intent = new Intent(Login.this, formregister1.class);
-                startActivity(intent);
+                startActivity(intent);}
+                else {
+                    getpermission();
+                }
             }
         });
 
@@ -96,6 +109,7 @@ public class Login  extends AppCompatActivity {
     private void getinternalstorage() {
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
             requestinternal();
+            masukke = 2;
         }
         else {
             requestinternal();
@@ -129,20 +143,26 @@ public class Login  extends AppCompatActivity {
     }
 
     private void getcamera() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED){
             getpermissionstorage();
         }
         else {
             requestcamera();
         }
+
+        }else {
+            getpermissionstorage();
+        }
     }
 
     private void requestcamera() {
+
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CAMERA)) {
             new AlertDialog.Builder(this)
                     .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Telp")
+                    .setMessage("Aplikasi Membutuhkan perizinan Camera")
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -165,35 +185,44 @@ public class Login  extends AppCompatActivity {
     }
 
     private void getpermission() {
-    if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)==PackageManager.PERMISSION_GRANTED){
-        getcall();
-    }
-else {
-    requestloc();
-    }
-        if (ContextCompat.checkSelfPermission( Login.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestloc();
-        } else {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)==PackageManager.PERMISSION_GRANTED){
+               getcall();
+
+            }
+            else {
+                requestloc();
+            }
+        }else {
             getcall();
         }
+
     }
 
     private void getpermissionstorage() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
             getinternalstorage();
         }
         else {
             requestExternal();
         }
+        }else {
+            getinternalstorage();
+        }
     }
 
     private void getcall() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.CALL_PHONE)==PackageManager.PERMISSION_GRANTED){
-            getinternet();
             getcamera();
         }
         else {
             requestcall();
+        }
+
+        }else{
+            getcamera();
         }
     }
 
@@ -206,12 +235,11 @@ else {
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            getinternet();
-                            getcamera();
                             getpermissionstorage();
                             getinternalstorage();
                             ActivityCompat.requestPermissions(Login.this,
                                     new String[] {Manifest.permission.CALL_PHONE}, Call);
+                            getcamera();
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -228,11 +256,15 @@ else {
     }
 
     private void getinternet() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.INTERNET)==PackageManager.PERMISSION_GRANTED){
             getcamera();
         }
         else {
             requestinternet();
+        }
+        }else {
+            getcamera();
         }
     }
 
@@ -291,44 +323,49 @@ else {
     }
 
     private void requestloc() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Lokasi")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            getcall();
-                            ActivityCompat.requestPermissions(Login.this,
-                                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, lokasion);
-                            ActivityCompat.requestPermissions(Login.this,
-                                    new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
-                        }
-                    })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)){
+                new AlertDialog.Builder(this)
+                        .setTitle("Permission needed")
+                        .setMessage("Aplikasi Membutuhkan perizinan Lokasi")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(Login.this,
+                                        new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
+                                getcall();
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create().show();
+            }else {
+                getcall();
+                ActivityCompat.requestPermissions(this,
+                        new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
+                Toast.makeText(getApplicationContext(),"hell",Toast.LENGTH_LONG).show();
+
+            }
+
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, lokasion);
-            ActivityCompat.requestPermissions(this,
-
-            new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
+                    new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
         }
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == STORAGE_PERMISSION_CODE&& requestCode == lokasion&& requestCode == internal&& requestCode==internet && requestCode==camera
+        if (requestCode == STORAGE_PERMISSION_CODE && requestCode == lokasion && requestCode == internal&& requestCode==internet && requestCode==camera
                 && requestCode== Call)  {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+                masukke = 2;
             } else {
-                requestloc();
+              getpermission();
             }
         }
     }

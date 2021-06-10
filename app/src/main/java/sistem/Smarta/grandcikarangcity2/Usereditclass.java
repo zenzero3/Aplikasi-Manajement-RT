@@ -364,7 +364,7 @@ public class Usereditclass  extends AppCompatActivity {
 
 
 
-    private void getimageurl(String id) {
+    private void getimageurl(final String id) {
         final ProgressDialog progressBar = new ProgressDialog(Usereditclass.this);
         progressBar.setMessage("Loadding....");
         progressBar.show();
