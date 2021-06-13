@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -48,16 +51,27 @@ public class Login  extends AppCompatActivity {
     private TextInputEditText username, password;
     private TextInputLayout email, passworde;
     private int STORAGE_PERMISSION_CODE = 1;
-    private int camera = 1;
+    private int camera = 1,iko=0;
     private int internal= 1;
-    private int lokasion= 0;
+    private int lokasion= 1;
     private int internet = 1;
+    int login=0,register=0;
+    String izin="gagal";
     private int Call= 1,masukke=1;
+    SharedPreferences eko ;
+    int wool;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        getpermission();
+        eko = getSharedPreferences("log",Context.MODE_PRIVATE);
+        wool = eko.getInt("isi",0);
+        if (masukke == 1){
+            if (wool ==0){
+                getpermission();
+            }
+            getpermission();
+        }
         Button satu = (Button) findViewById(R.id.buttonlogin);
         Button dua = (Button) findViewById(R.id.button2);
         username = findViewById(R.id.username);
@@ -70,52 +84,178 @@ public class Login  extends AppCompatActivity {
         satu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (masukke == 1){
-                    getalertdialog();
-                }else if (masukke==2){
-                    if (username.getText().toString().isEmpty()){
-                        username.setError("Email Tidak boleh kosong");
-                    }else if (password.getText().toString().isEmpty()){
-                        password.setError("Password Tidak boleh Kosong");
-                    }else {
-                        email.setErrorEnabled(false);
-                        passworde.setErrorEnabled(false);
+                getpermission();
+                if (izin.equals("gagal")){
+
+                }else {
+                login = 1;
+                register =0;
+               if (masukke == 1){
+                   if (wool == 0){
+                       getalertdialog();
+                   }else {
+                       if (username.getText().toString().isEmpty()){
+                           Toast.makeText(getApplicationContext(), "Username Kosong",Toast.LENGTH_LONG).show();
+                           username.setError("Email Tidak boleh kosong");
+                       }else if (password.getText().toString().isEmpty()){
+                           Toast.makeText(getApplicationContext(), "Password Kosong",Toast.LENGTH_LONG).show();
+                           password.setError("Password Tidak boleh Kosong");
+                       }else {
+                           email.setErrorEnabled(false);
+                           passworde.setErrorEnabled(false);
                         Logines();
-                    }
-                }
-                else {
-                    getpermission();
+                       }
+                   }
+                }else if (masukke==2){
+                   if (wool == 0){
+                       getalertdialog();
+                   }else {
+                       if (username.getText().toString().isEmpty()){
+                           Toast.makeText(getApplicationContext(), "Username Kosong",Toast.LENGTH_LONG).show();
+                           username.setError("Email Tidak boleh kosong");
+                       }else if (password.getText().toString().isEmpty()){
+                           Toast.makeText(getApplicationContext(), "Password Kosong",Toast.LENGTH_LONG).show();
+                           password.setError("Password Tidak boleh Kosong");
+                       }else {
+                           email.setErrorEnabled(false);
+                           passworde.setErrorEnabled(false);
+                          Logines();
+                       }
+                   }
                 }
 
                  }
+            }
         });
 
 
         dua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (masukke==2){
-                Intent intent = new Intent(Login.this, formregister1.class);
-                startActivity(intent);}
-                else {
-                    getpermission();
+                getpermission();
+                register=1;
+                login = 0;
+                if (izin.equals("gagal")){
+                    
+                }else {
+                if (masukke == 1){
+                    if (wool == 0){
+                        getalertdialog();
+                    }else {
+                        Intent regis = new Intent(Login.this, formregister1.class);
+                        startActivity(regis);
+                    }
+                }else if (masukke==2){
+                    if (wool == 0){
+                        getalertdialog();
+                    }else {
+                        Intent regis = new Intent(Login.this, formregister1.class);
+                        startActivity(regis);
+                    }
                 }
-            }
+            }}
         });
-
 
     }
 
     private void getalertdialog() {
+        if (wool==2){
+            if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                    if (login==1 && register==0){
+                        if (username.getText().toString().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Username Kosong",Toast.LENGTH_LONG).show();
+                            username.setError("Email Tidak boleh kosong");
+                        }else if (password.getText().toString().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Password Kosong",Toast.LENGTH_LONG).show();
+                            password.setError("Password Tidak boleh Kosong");
+                        }else {
+                            email.setErrorEnabled(false);
+                            passworde.setErrorEnabled(false);
+                            Logines();
+                        }
+                    }else {
+                        Intent regis = new Intent(Login.this, formregister1.class);
+                        startActivity(regis);
+                    }
+                }
+                if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+
+                }
+
+
+                if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)==PackageManager.PERMISSION_GRANTED){
+
+
+                }
+                else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Warning Permission Needed")
+                            .setMessage("Membutuhkan perizinan aplikasi")
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences.Editor edit = eko.edit();
+                                    wool =2;
+                                    edit.putInt("isi",2);
+                                    edit.apply();
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    Uri uri = Uri.fromParts("package",getPackageName(),null);
+                                    intent.setData(uri);
+                                    startActivity(intent);
+                                    dialog.dismiss();
+
+                                }
+                            })
+                            .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences.Editor edit = eko.edit();
+                                    wool =1;
+                                    edit.putInt("isi",2);
+                                    edit.apply();
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create().show();
+                }
+            }else {
+                if (login==1 && register==0){
+                    if (username.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Username Kosong",Toast.LENGTH_LONG).show();
+                        username.setError("Email Tidak boleh kosong");
+                    }else if (password.getText().toString().isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Password Kosong",Toast.LENGTH_LONG).show();
+                        password.setError("Password Tidak boleh Kosong");
+                    }else {
+                        email.setErrorEnabled(false);
+                        passworde.setErrorEnabled(false);
+                        Logines();
+                    }
+                }else {
+                    Intent regis = new Intent(Login.this, formregister1.class);
+                    startActivity(regis);
+                }
+
+            }
+        } else {
+
         new AlertDialog.Builder(this)
-                .setTitle("Permission needed")
-                .setMessage("Aplikasi Memerlukan Perizinan Lokasi ")
+                .setTitle("Warning Permission Needed")
+                .setMessage("Membutuhkan perizinan aplikasi")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ActivityCompat.requestPermissions(Login.this,
-                                new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, lokasion);
-                        getpermission();
+                            SharedPreferences.Editor edit = eko.edit();
+                            wool =2;
+                            edit.putInt("isi",2);
+                            edit.apply();
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package",getPackageName(),null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                            dialog.dismiss();
+
                     }
                 })
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -125,12 +265,12 @@ public class Login  extends AppCompatActivity {
                     }
                 })
                 .create().show();
+        }
     }
 
     private void getinternalstorage() {
         if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
-            requestinternal();
-
+            masukke=2;
         }
         else {
             requestinternal();
@@ -142,12 +282,13 @@ public class Login  extends AppCompatActivity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             new AlertDialog.Builder(this)
                     .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Telp")
+                    .setMessage("Aplikasi Membutuhkan perizinan internal")
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(Login.this,
                                     new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
+                            dialog.dismiss();
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -187,9 +328,10 @@ public class Login  extends AppCompatActivity {
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            getpermissionstorage();
                             ActivityCompat.requestPermissions(Login.this,
                                     new String[] {Manifest.permission.CAMERA}, camera);
+                            getpermissionstorage();
+                            dialog.dismiss();
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -206,9 +348,17 @@ public class Login  extends AppCompatActivity {
     }
 
     private void getpermission() {
+        if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+            getcall();
+
+        }
+        if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+            getcall();
+
+        }
+
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
             if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                masukke = 2;
                getcall();
 
             }
@@ -249,6 +399,7 @@ public class Login  extends AppCompatActivity {
     }
 
     private void requestcall() {
+
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CALL_PHONE)) {
             new AlertDialog.Builder(this)
@@ -262,6 +413,7 @@ public class Login  extends AppCompatActivity {
                             ActivityCompat.requestPermissions(Login.this,
                                     new String[] {Manifest.permission.CALL_PHONE}, Call);
                             getcamera();
+                            dialog.dismiss();
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -277,45 +429,6 @@ public class Login  extends AppCompatActivity {
         }
     }
 
-    private void getinternet() {
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-        if (ContextCompat.checkSelfPermission(Login.this,Manifest.permission.INTERNET)==PackageManager.PERMISSION_GRANTED){
-            getcamera();
-        }
-        else {
-            requestinternet();
-        }
-        }else {
-            getcamera();
-        }
-    }
-
-    private void requestinternet() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.INTERNET)) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Galerry")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            getcamera();
-                            ActivityCompat.requestPermissions(Login.this,
-                                    new String[] {Manifest.permission.INTERNET}, internet);
-                        }
-                    })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[] {Manifest.permission.INTERNET}, internet);
-        }
-    }
 
     private void requestExternal() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
@@ -326,9 +439,10 @@ public class Login  extends AppCompatActivity {
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            getinternalstorage();
                             ActivityCompat.requestPermissions(Login.this,
                                     new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                            getinternalstorage();
+                            dialog.dismiss();
                         }
                     })
                     .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -345,10 +459,7 @@ public class Login  extends AppCompatActivity {
     }
 
     private void requestloc() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION)
-                != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_BACKGROUND_LOCATION)){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
                 new AlertDialog.Builder(this)
                         .setTitle("Permission needed")
                         .setMessage("Aplikasi Membutuhkan perizinan Lokasi")
@@ -356,8 +467,14 @@ public class Login  extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 ActivityCompat.requestPermissions(Login.this,
+                                        new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, lokasion);
+                                ActivityCompat.requestPermissions(Login.this,
+                                        new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, lokasion);
+                                ActivityCompat.requestPermissions(Login.this,
                                         new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
+                                dialog.dismiss();
                                 getcall();
+
                             }
                         })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -367,14 +484,12 @@ public class Login  extends AppCompatActivity {
                             }
                         })
                         .create().show();
-            }else {
-                ActivityCompat.requestPermissions(this,
-                        new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
-
-            }
-
-        } else {
+            } else {
             ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, lokasion);
+                ActivityCompat.requestPermissions(this,
+                        new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, lokasion);
+                ActivityCompat.requestPermissions(this,
                     new String[] {Manifest.permission.ACCESS_BACKGROUND_LOCATION}, lokasion);
         }
     }
@@ -383,10 +498,25 @@ public class Login  extends AppCompatActivity {
         if (requestCode == STORAGE_PERMISSION_CODE && requestCode == lokasion && requestCode == internal&& requestCode==internet && requestCode==camera
                 && requestCode== Call)  {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                masukke = 2;
+                masukke=2;
+                SharedPreferences.Editor editors = eko.edit();
+                editors.putInt("isi", 1);
+                editors.apply();
+                editors.commit();
+                izin="sukses";
             } else {
-                Toast.makeText(getApplicationContext(),"aplikasi membutuhkan lokasi"+requestCode,Toast.LENGTH_LONG).show();
+                masukke=1;
+                SharedPreferences.Editor editors = eko.edit();
+                editors.putInt("isi", 0);
+                editors.apply();
+                editors.commit();
             }
+        }else {
+            masukke=1;
+            SharedPreferences.Editor editors = eko.edit();
+            editors.putInt("isi", 0);
+            editors.apply();
+            editors.commit();
         }
     }
 

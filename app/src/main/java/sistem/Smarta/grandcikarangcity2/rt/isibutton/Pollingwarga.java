@@ -138,18 +138,18 @@ public class Pollingwarga extends AppCompatActivity {
                 String aku =namapolling.getText().toString();
                 String dua = des.getText().toString();
                 if (aku.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Nama Polling Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Nama Poling Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     namapolling.setError("Nama Polling Kosong");
                 }else if (dua.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Deskripsi Tidak boleh Kosong",Toast.LENGTH_LONG).show();
                     des.setError("Deskripsi Kosong");
-                }else if (progessone.equals("Pilih Kategori Polling")){
-                    Toast.makeText(getApplicationContext(),"Pilih Kategori Polling",Toast.LENGTH_LONG).show();
-                }else if (progesstwo.equals("Pilih Penerima Polling Berdasarkan Jenis Kelamin")){
-                    Toast.makeText(getApplicationContext(),"Pilih Penerima Polling",Toast.LENGTH_LONG).show();
+                }else if (progessone.equals("Pilih Kategori Poling")){
+                    Toast.makeText(getApplicationContext(),"Pilih Kategori Poling",Toast.LENGTH_LONG).show();
+                }else if (progesstwo.equals("Pilih Penerima Poling Berdasarkan Jenis Kelamin")){
+                    Toast.makeText(getApplicationContext(),"Pilih Penerima Poling",Toast.LENGTH_LONG).show();
                 }else if (progessone.equals("Agama")){
-                    if (progesstwo.equals("Pilih Penerima Polling Berdasarkan Jenis Kelamin")){
-                        Toast.makeText(getApplicationContext(),"Pilih Penerima Polling",Toast.LENGTH_LONG).show();
+                    if (progesstwo.equals("Pilih Penerima Poling Berdasarkan Jenis Kelamin")){
+                        Toast.makeText(getApplicationContext(),"Pilih Penerima Poling",Toast.LENGTH_LONG).show();
                     } else {
                     postdataagam();
                     }

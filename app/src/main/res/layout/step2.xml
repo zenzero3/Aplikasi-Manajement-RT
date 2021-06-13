@@ -1,52 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<fragment
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentBottom="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/maps"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-/>
-   <!-- <LinearLayout
-        android:id="@+id/isi"
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/maps"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/bgnice"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="-2dp" />
+
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/location" />
+    <!-- <LinearLayout
+         android:id="@+id/isi"
+         android:layout_width="match_parent"
+         android:layout_height="71dp"
+         android:layout_alignParentStart="true"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentBottom="true"
+         android:layout_marginEnd="5dp"
+         android:layout_marginStart="15dp"
+         android:background="@drawable/bgnice"
+         android:orientation="horizontal"
+         android:weightSum="3">
 
 
-        <ImageButton
+         <ImageButton
 
-            android:id="@+id/carialamat"
-            android:layout_width="54dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="5dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_loupe" />
+             android:id="@+id/carialamat"
+             android:layout_width="54dp"
+             android:layout_height="35dp"
+             android:layout_gravity="center_vertical"
+             android:layout_marginStart="5dp"
+             android:background="?attr/selectableItemBackgroundBorderless"
+             android:scaleType="centerInside"
+             android:layout_marginEnd="15dp"
+             android:src="@drawable/ic_loupe" />
 
-        <EditText
-            android:id="@+id/dapetama"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginEnd="15dp"
-            android:layout_gravity="center_vertical"
-            android:background="#EBECF3" />
+         <EditText
+             android:id="@+id/dapetama"
+             android:layout_width="match_parent"
+             android:layout_height="36dp"
+             android:layout_marginEnd="15dp"
+             android:layout_gravity="center_vertical"
+             android:background="#EBECF3" />
 
 
-    </LinearLayout>-->
+     </LinearLayout>-->
 
 </RelativeLayout>

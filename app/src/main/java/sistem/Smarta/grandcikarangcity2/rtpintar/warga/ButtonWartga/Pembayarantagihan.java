@@ -101,13 +101,13 @@ Button mantapssale;
                                     Toast.makeText(Pembayarantagihan.this, "Transaksi Sukses ", Toast.LENGTH_LONG).show();
                                     break;
                                 case TransactionResult.STATUS_PENDING:
-                                    stat="STATUS_PENDING";
+                                    stat="PENDING";
                                     datamasuk(result.getResponse().getOrderId());
                                     Toast.makeText(Pembayarantagihan.this, "Transaksi Pending, Segera Selesaikan Pembayaran Anda" , Toast.LENGTH_LONG).show();
                                     break;
                                 case TransactionResult.STATUS_FAILED:
                                     datamasuk(result.getResponse().getOrderId());
-                                    stat="STATUS_GAGAL";
+                                    stat="GAGAL";
                                     Toast.makeText(Pembayarantagihan.this, "Transaksi Gagal", Toast.LENGTH_LONG).show();
                                     break;
                             }

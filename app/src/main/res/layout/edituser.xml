@@ -192,6 +192,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/hk"
                     android:inputType="phone"
+                    android:maxLength="12"
                     android:textSize="12sp" />
 
             </com.google.android.material.textfield.TextInputLayout>

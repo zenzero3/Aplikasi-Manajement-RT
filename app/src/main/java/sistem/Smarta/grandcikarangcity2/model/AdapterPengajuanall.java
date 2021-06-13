@@ -1,6 +1,8 @@
 package sistem.Smarta.grandcikarangcity2.model;
 
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -369,6 +372,7 @@ public class AdapterPengajuanall extends RecyclerView.Adapter<AdapterPengajuanal
     }
 
     private void createpdf(String namaju, String nama, String tempatlahir, String tgllahir, String nik, String nikah, String jk, String kerja, String kk, String alama, String agam, String name, String desa, String kelurahan, String kecamatan, String provinsi, String nort, String norw, String date) throws ParseException {
+        int ss ;
         PdfDocument pdfDocument  = new PdfDocument();
         Paint title = new Paint();
         Date format;
@@ -459,16 +463,26 @@ public class AdapterPengajuanall extends RecyclerView.Adapter<AdapterPengajuanal
 
 
         pdfDocument.finishPage(page);
-        File myFile = new File(Environment.getExternalStorageDirectory(),"/"+namaju+" "+nama+".pdf");
+        File myFile = new File(Environment.getExternalStorageDirectory(), "Download/"+namaju+""+nama+".pdf");
         try {
            pdfDocument.writeTo(new FileOutputStream(myFile));
            Toast.makeText(context, "Surat Pengajuan/Keterangan berhasil Tersimpan ", Toast.LENGTH_LONG).show();
+         ss =1;
         }
         catch (Exception e){
             e.printStackTrace();
+            ss=2;
             Toast.makeText(context, "PDF Gagal", Toast.LENGTH_LONG).show();
         }
         pdfDocument.close();
+        if (ss == 1){
+            getpdf();
+        }
 
+
+    }
+
+    private void getpdf() {
+        context.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
     }
 }

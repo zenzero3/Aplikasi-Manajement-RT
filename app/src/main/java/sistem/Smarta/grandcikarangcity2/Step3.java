@@ -1,17 +1,22 @@
 package sistem.Smarta.grandcikarangcity2;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +31,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,6 +67,7 @@ import java.util.Objects;
 import sistem.Smarta.grandcikarangcity2.model.AppHelper;
 import sistem.Smarta.grandcikarangcity2.model.VolleyMultipartRequest;
 import sistem.Smarta.grandcikarangcity2.model.VolleySingleton;
+import sistem.Smarta.grandcikarangcity2.rt.Login;
 
 import static android.app.Activity.RESULT_CANCELED;
 
@@ -66,7 +75,10 @@ public class Step3 extends Fragment implements Step, BlockingStep {
     String user;
     int j = 0;
     Bitmap ekoa,dwi;
+    private int internal= 1;
+    private int STORAGE_PERMISSION_CODE = 1;
     TextView des,fas,lok,blo,per,nona;
+    private int camera = 1;
     String maslaah,falislitas,lokasi, perum, blok,norumah;
     ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
     ArrayList<Bitmap>imagearray;
@@ -99,8 +111,8 @@ public class Step3 extends Fragment implements Step, BlockingStep {
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
+                getcamera();
+                                final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
                 dialog.setContentView(R.layout.bottomsheetone);
                 final LinearLayout foto = dialog.findViewById(R.id.kamera);
                 final  TextView back   = dialog.findViewById(R.id.cancel);
@@ -203,6 +215,45 @@ public class Step3 extends Fragment implements Step, BlockingStep {
 
             }
         }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == STORAGE_PERMISSION_CODE && requestCode == camera) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getdata();
+            } else {
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("Warning Permission Needed")
+                        .setMessage("Membutuhkan perizinan aplikasi")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ActivityCompat.requestPermissions(requireActivity(),
+                                        new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
+                                ActivityCompat.requestPermissions(requireActivity(),
+                                        new String[] {Manifest.permission.CAMERA}, camera);
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package",getActivity().getPackageName(),null);
+                                intent.setData(uri);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create().show();
+            }
+        } else {
+
+        }
+    }
+
+    private void getdata() {
+
     }
 
     @Nullable
@@ -366,5 +417,121 @@ public class Step3 extends Fragment implements Step, BlockingStep {
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
         callback.goToPrevStep();
+    }
+
+    private void getcamera() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED){
+                getpermissionstorage();
+            }
+            else {
+                requestcamera();
+            }
+
+        }else {
+            getpermissionstorage();
+        }
+    }
+    private void requestcamera() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                Manifest.permission.CAMERA)) {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Permission needed")
+                    .setMessage("Aplikasi Membutuhkan perizinan Camera")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getpermissionstorage();
+                            ActivityCompat.requestPermissions(requireActivity(),
+                                    new String[] {Manifest.permission.CAMERA}, camera);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[] {Manifest.permission.CAMERA}, camera);
+        }
+    }
+    private void getpermissionstorage() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
+                getinternalstorage();
+            }
+            else {
+                requestExternal();
+            }
+        }else {
+            getinternalstorage();
+        }
+    }
+    private void requestExternal() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Permission needed")
+                    .setMessage("Aplikasi Membutuhkan perizinan Galerry")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            getinternalstorage();
+                            ActivityCompat.requestPermissions(requireActivity(),
+                                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        }
+    }
+    private void getinternalstorage() {
+        if (ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
+            getdata();
+        }
+        else {
+            requestinternal();
+        }
+
+    }
+
+
+    private void requestinternal() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Permission needed")
+                    .setMessage("Aplikasi Membutuhkan perizinan internal")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(requireActivity(),
+                                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
+                            dialog.dismiss();
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
+        }
     }
 }

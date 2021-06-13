@@ -104,14 +104,14 @@ public class formregister1 extends AppCompatActivity {
                         if (ik<8){
                             Toast.makeText(formregister1.this,"Password Harus Lebih  Dari 8 Karakter",Toast.LENGTH_LONG).show();
                             password.setErrorEnabled(true);
-                            password.setError("Passowrd Salah");
+                            password.setError("Passowrd Harus Lebih Dari 8 Karakter");
                         }else {
                             getuser(nama, email, user, password, hp);
                         }
                     }else {
                         Toast.makeText(formregister1.this,"Format Nomor Salah",Toast.LENGTH_LONG).show();
                        hp.setErrorEnabled(true);
-                        hp.setError("Format  salah");
+                        hp.setError("Format Nomor Telp salah");
                     }
                 }
                 else {

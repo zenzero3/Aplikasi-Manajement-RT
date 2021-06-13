@@ -39,11 +39,11 @@ public class Adapterwargaindividu extends RecyclerView.Adapter<Adapterwargaindiv
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         iuranwargapost iuranwargapost = datahistoriesl.get(position);
         holder.satu.setText(iuranwargapost.getNamaiuran());
-        if (iuranwargapost.getStatus().equals("STATUS_SUCCESS")){
+        if (iuranwargapost.getStatus().equals("STATUS_SUCCESS")||iuranwargapost.getStatus().equals("SUCCESS")){
             holder.aku.setBackground(ContextCompat.getDrawable(context,R.drawable.bgoutok));
             holder.dua.setText("SUCCESS");
             holder.staut=iuranwargapost.getStatus();
-        }else if (iuranwargapost.getStatus().equals("STATUS_PENDING")){
+        }else if (iuranwargapost.getStatus().equals("STATUS_PENDING")||iuranwargapost.getStatus().equals("PENDING")){
             holder.aku.setBackground(ContextCompat.getDrawable(context,R.drawable.bgbutton));
             holder.dua.setText("PENDING");
             holder.staut=iuranwargapost.getStatus();
@@ -86,7 +86,7 @@ public class Adapterwargaindividu extends RecyclerView.Adapter<Adapterwargaindiv
                             intent.putExtra("id", iuranwargapost.getId());
                             context.startActivity(intent);
                         }
-                    else if (staut.equals("STATUS_PENDING")){
+                    else if (staut.equals("STATUS_PENDING")||staut.equals("PENDING")){
                             final Intent intent;
                             iuranwargapost iuranwargapost = datahistoriesl.get(getAdapterPosition());
                             context = itemView.getContext();

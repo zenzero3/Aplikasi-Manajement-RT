@@ -92,9 +92,9 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:fontFamily="@font/hk"
-                        android:textSize="18sp"
-                        android:text="Perumahan"
+                        android:text="Lokasi Laporan"
                         android:textColor="@color/colorbackld"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:typeface="monospace" />
 
@@ -166,14 +166,14 @@
                     >
 
                     <TextView
-                        android:fontFamily="@font/hk"
-                        android:textSize="18sp"
-                        android:typeface="monospace"
-                        android:textColor="@color/colorbackld"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lokasi" />
+                        android:fontFamily="@font/hk"
+                        android:text="Lokasi Gps"
+                        android:textColor="@color/colorbackld"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
 
                     <TextView
                         android:id="@+id/lokasi"

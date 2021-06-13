@@ -71,7 +71,7 @@ public class AdapterTransaksi  extends RecyclerView.Adapter<AdapterTransaksi.Myv
                         intent.putExtra("id", iuranwargapost.getId());
                         context.startActivity(intent);
                     }
-                    else if (staut.equals("STATUS_PENDING")){
+                    else if (staut.equals("STATUS_PENDING")||staut.equals("PENDING")){
                         final Intent intent;
                         Transaksi iuranwargapost = transaksis.get(getAdapterPosition());
                         context = itemView.getContext();

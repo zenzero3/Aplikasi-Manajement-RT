@@ -339,7 +339,7 @@ Button cek,bayarlagi;
 
                             if (message.equals("update success")) {
                                 if (success.equals("true")) {
-                                    statusiuran.setText("STATUS_SUCCESS");
+                                    statusiuran.setText("SUCCESS");
                                 }
                             }else {
                                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
@@ -409,7 +409,7 @@ Button cek,bayarlagi;
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("statu","STATUS_SUCCESS");
+                params.put("statu","SUCCESS");
                 params.put("Content-Type","application/x-www-form-urlencoded");
                 return params;
             }};

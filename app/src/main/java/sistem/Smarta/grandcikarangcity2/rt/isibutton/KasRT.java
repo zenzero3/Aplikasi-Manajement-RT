@@ -172,13 +172,21 @@ public class KasRT extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nominal = ee.getText().toString();
+                int dwi = Integer.parseInt(nominal);
                 namakas = name.getText().toString();
                 if (namakas.equals("")){
                     Toast.makeText(getApplicationContext(),"Nominal Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                 }else  if (nominal.equals("")){
                     Toast.makeText(getApplicationContext(),"Nama Dana Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                 }else {
-                    savedata();
+                    if (nominal.equals(0)){
+                        Toast.makeText(getApplicationContext(),"Nominal Tidak boleh kosong",Toast.LENGTH_LONG).show();
+                    }else if (dwi<=4000){
+                        Toast.makeText(getApplicationContext(),"Minimal Pendanaan Rp 50000 ",Toast.LENGTH_LONG).show();
+                    }else {
+                        savedata();
+                    }
+
                 }
 
                 customDialog.dismiss();
@@ -212,13 +220,13 @@ public class KasRT extends AppCompatActivity {
                                     Toast.makeText(KasRT.this, "Transaksi Sukses ", Toast.LENGTH_LONG).show();
                                     break;
                                 case TransactionResult.STATUS_PENDING:
-                                    stat="STATUS_PENDING";
+                                    stat="PENDING";
                                     datamasuk(result.getResponse().getOrderId());
                                     Toast.makeText(KasRT.this, "Transaksi Pending, Segera Selesaikan Pembayaran Anda" , Toast.LENGTH_LONG).show();
                                     break;
                                 case TransactionResult.STATUS_FAILED:
                                     datamasuk(result.getResponse().getOrderId());
-                                    stat="STATUS_GAGAL";
+                                    stat="GAGAL";
                                     Toast.makeText(KasRT.this, "Transaksi Gagal", Toast.LENGTH_LONG).show();
                                     break;
                             }

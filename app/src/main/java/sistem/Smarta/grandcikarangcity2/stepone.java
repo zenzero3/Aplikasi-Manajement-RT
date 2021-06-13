@@ -14,6 +14,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -57,7 +58,7 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
     SharedPreferences laporan;
     /*ImageButton poto;*/
     String rumah,fasilitas,noblok,norumah,lokal;
-    public int one =1;
+    public int one;
     String namalokasi;
     FusedLocationProviderClient lokasi;
     TextView ambilgaleri, ambilkamera,peruma;
@@ -81,7 +82,6 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
        /* poto = v.findViewById(R.id.buttonambil);*/
         final Spinner spinner = v.findViewById(R.id.spinner);
         lokasi= LocationServices.getFusedLocationProviderClient(requireContext());
-        getlocation();
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(), R.array.kerusakan_array,R.layout.itemoke2);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -136,27 +136,39 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
     }
 
     private void getlocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            getalert();
+            return;
+        }else
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             Task<Location> task = lokasi.getLastLocation();
             task.addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(final Location location) {
-                    if (location != null){
-                        Geocoder geocoder = new Geocoder(getActivity(),Locale.getDefault());
+                    if (location != null) {
+                        Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                         try {
-                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                            namalokasi=addresses.get(0).getAddressLine(0);
+                            one =2;
+                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                            namalokasi = addresses.get(0).getAddressLine(0);
+                            peruma.setText(namalokasi);
 
                         } catch (IOException e) {
                             e.printStackTrace();
+                            Toast.makeText(getContext(),""+e,Toast.LENGTH_LONG).show();
+
                         }
+                    }else {
+                        one =1;
+                        getalert();
                     }
                 }
             });
-        }else {
+              }else    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
-            Toast.makeText(requireContext(),"Membutuhkan Allow permission Untuk access Laporan",Toast.LENGTH_LONG).show();
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},44);
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},44);
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 Task<Location> task = lokasi.getLastLocation();
                 task.addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override
@@ -181,15 +193,22 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
     }
 
     private void getalert() {
+        if (one == 1){
         new AlertDialog.Builder(requireContext())
                 .setTitle("Permission needed")
-                .setMessage("Aplikasi Memerlukan Perizinan Lokasi ")
+                .setCancelable(false)
+                .setMessage("Pilih Akses Lokasi Sepanjang Waktu \nUntuk Menggunakan Fitur Ini")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ActivityCompat.requestPermissions(getActivity(),
                                 new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
-                      getlocation();
+                        one = 2;
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package",getActivity().getPackageName(),null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                        getActivity().finish();
                     }
                 })
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -200,6 +219,9 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
                     }
                 })
                 .create().show();
+    }else {
+            getlocation();
+        }
     }
 
 
@@ -313,7 +335,6 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        getlocation();
     }
     @Override
     public void onSelected() {

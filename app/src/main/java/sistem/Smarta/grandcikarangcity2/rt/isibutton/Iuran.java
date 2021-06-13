@@ -66,6 +66,7 @@ public class Iuran extends AppCompatActivity {
     EditText tiga;
     ArrayList<String> nama;
     Dialog dialogok;
+    int dapt;
     ArrayList<String> nikelodion;
     BottomSheetDialog dialog;
      Spinner warga,aku;
@@ -125,13 +126,17 @@ public class Iuran extends AppCompatActivity {
                 empat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dapt = Integer.parseInt(tiga.getText().toString());
                        if (tiga.getText().toString().isEmpty()){
                            Toast.makeText(Iuran.this,"Nominal Kosong",Toast.LENGTH_LONG).show();
                            tiga.setError("Nominal Tidak boleh Kosong");
                        }
                        else if  (date.equals("kosong")){
                            Toast.makeText(Iuran.this,"Tanggal Masih Kosong",Toast.LENGTH_LONG).show();
-                       }else {
+                       }else  if(dapt==0 ||dapt<=4000){
+                           Toast.makeText(Iuran.this,"Minimal Nominal Rp5000",Toast.LENGTH_LONG).show();
+                           tiga.setError("Minimal Nominal Rp5000");
+                       } else {
                            nominal = tiga.getText().toString();
                            namawarga = new ArrayList<>();
                            nike= new ArrayList<>();

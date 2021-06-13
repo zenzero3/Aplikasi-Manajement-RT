@@ -1,15 +1,18 @@
 package sistem.Smarta.grandcikarangcity2;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
@@ -23,9 +26,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.volley.AuthFailureError;
@@ -64,6 +70,7 @@ public class Usereditclass  extends AppCompatActivity {
     TextInputLayout user,email,pase,noh,namalengkapo;
     CircleImageView aku;
     int i = 0;
+    private int camera = 1;
     String path,idem,gambarpasang,id_image;
     SharedPreferences preferences,leo;
     String ide,usernames , pass, namas ,emails,nohps,linkid;
@@ -121,7 +128,7 @@ public class Usereditclass  extends AppCompatActivity {
                         if (ik<8){
                             Toast.makeText(Usereditclass.this,"Password Harus Lebih  Dari 8 Karakter",Toast.LENGTH_LONG).show();
                             pase.setErrorEnabled(true);
-                            pase.setError("Passowrd Salah");
+                            pase.setError("Password Salah");
                         }else {
                             uploademage();
                         }
@@ -416,43 +423,87 @@ public class Usereditclass  extends AppCompatActivity {
     }
 
     private void tambahgambar() {
+        getcamera();
+    }
 
-        final BottomSheetDialog dialog = new BottomSheetDialog(Usereditclass.this, R.style.CustomBottomSheetDialogTheme);
-        dialog.setContentView(R.layout.bottomsheetone);
-        final LinearLayout foto = dialog.findViewById(R.id.kamera);
-        final TextView back   = dialog.findViewById(R.id.cancel);
-        final LinearLayout galeri = dialog.findViewById(R.id.ambilhp);
-        dialog.setCanceledOnTouchOutside(false);
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
+    private void getcamera() {
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (ContextCompat.checkSelfPermission(Usereditclass.this,Manifest.permission.CAMERA)==PackageManager.PERMISSION_GRANTED){
+                final BottomSheetDialog dialog = new BottomSheetDialog(Usereditclass.this, R.style.CustomBottomSheetDialogTheme);
+                dialog.setContentView(R.layout.bottomsheetone);
+                final LinearLayout foto = dialog.findViewById(R.id.kamera);
+                final TextView back   = dialog.findViewById(R.id.cancel);
+                final LinearLayout galeri = dialog.findViewById(R.id.ambilhp);
+                dialog.setCanceledOnTouchOutside(false);
+                Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
 
+                    }
+                });
+                galeri.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        i=1;
+                        Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(intent, 1);
+
+                        dialog.dismiss();
+                    }
+                });
+                foto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        i=2;
+                        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        if (intent.resolveActivity(getPackageManager()) != null) {
+                            startActivityForResult(intent, 2);
+                        }else {
+                            dialog.dismiss();
+                            getalert();
+                        }
+
+
+                        dialog.dismiss();
+                    }
+                });
             }
-        });
-        galeri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                i=1;
-                Intent intent = new   Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 1);
-
-                dialog.dismiss();
+            else {
+               getalert();
             }
-        });
-        foto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                i=2;
-                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, 2);
 
-                dialog.dismiss();
-            }
-        });
+        }else {
 
+        }
+    }
+
+    private void getalert() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CAMERA)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("Aplikasi Membutuhkan perizinan Camera")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(Usereditclass.this,
+                                    new String[] {Manifest.permission.CAMERA}, camera);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.CAMERA}, camera);
+        }
     }
 
     @Override
@@ -496,6 +547,21 @@ public class Usereditclass  extends AppCompatActivity {
         });
         AlertDialog alertDialog = alert.create();
         alertDialog.show();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode==camera)  {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(intent, 2);
+                }else {
+                    getalert();
+                }
+            } else {
+                getalert();
+            }
+        }
     }
 
 }

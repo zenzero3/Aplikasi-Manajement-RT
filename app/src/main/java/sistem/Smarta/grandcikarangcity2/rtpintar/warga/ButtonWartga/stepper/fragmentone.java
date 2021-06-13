@@ -79,7 +79,6 @@ public class fragmentone extends Fragment implements Step, BlockingStep, Adapter
                         Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                         try {
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-
                             namalokasi=addresses.get(0).getAddressLine(0);
                             longitude = addresses.get(0).getLongitude();
                             latitude  = addresses.get(0).getLatitude();
