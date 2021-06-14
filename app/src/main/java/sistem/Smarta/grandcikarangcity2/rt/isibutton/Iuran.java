@@ -126,14 +126,16 @@ public class Iuran extends AppCompatActivity {
                 empat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dapt = Integer.parseInt(tiga.getText().toString());
-                       if (tiga.getText().toString().isEmpty()){
+
+                       if (tiga.getText().toString().isEmpty()||tiga.getText().toString().equals("")){
                            Toast.makeText(Iuran.this,"Nominal Kosong",Toast.LENGTH_LONG).show();
                            tiga.setError("Nominal Tidak boleh Kosong");
-                       }
-                       else if  (date.equals("kosong")){
+                       }else {
+                           if  (date.equals("kosong")){
                            Toast.makeText(Iuran.this,"Tanggal Masih Kosong",Toast.LENGTH_LONG).show();
-                       }else  if(dapt==0 ||dapt<=4000){
+                       }else {
+                               dapt = Integer.parseInt(tiga.getText().toString());
+                           if(dapt==0 ||dapt<=4000){
                            Toast.makeText(Iuran.this,"Minimal Nominal Rp5000",Toast.LENGTH_LONG).show();
                            tiga.setError("Minimal Nominal Rp5000");
                        } else {
@@ -142,6 +144,8 @@ public class Iuran extends AppCompatActivity {
                            nike= new ArrayList<>();
                            postdataiuran(isiisd);
                        }
+                           }
+                    }
                     }
                 });
 

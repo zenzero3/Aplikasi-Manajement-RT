@@ -9,7 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import sistem.Smarta.grandcikarangcity2.model.datahistory;
@@ -18,6 +22,7 @@ import sistem.Smarta.grandcikarangcity2.model.datahistory;
 public class Adapter_history extends RecyclerView.Adapter<Adapter_history.Myviewholder>{
     private List<datahistory> datahistoriesl;
     private Context context;
+    Date date ;
     public Adapter_history(Context context, ArrayList<datahistory> datahistories) {
     this.datahistoriesl = datahistories;
         this.context = context;
@@ -33,8 +38,16 @@ public class Adapter_history extends RecyclerView.Adapter<Adapter_history.Myview
     @Override
     public void onBindViewHolder(@NonNull Myviewholder holder, int position) {
      datahistory isi= datahistoriesl.get(position);
-        holder.satu.setText(isi.getTanggal());
-        holder.dua.setText(isi.getDeskripsi());
+        date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat convetDateFormat = new SimpleDateFormat("dd-MM-YY");
+        try {
+            date = dateFormat.parse(isi.getTanggal());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.satu.setText(convetDateFormat.format(date)+"   ");
+        holder.dua.setText("      "+isi.getDeskripsi());
         holder.tiga.setText(isi.getStatus());
     }
 

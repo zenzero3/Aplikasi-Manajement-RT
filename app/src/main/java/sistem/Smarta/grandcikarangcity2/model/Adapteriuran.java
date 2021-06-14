@@ -10,7 +10,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import sistem.Smarta.grandcikarangcity2.Adapter_history;
@@ -34,7 +38,16 @@ public class Adapteriuran extends RecyclerView.Adapter<Adapteriuran.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull Adapteriuran.MyViewHolder holder, int position) {
         iurannamadesa isi =datahistoriesl.get(position);
-        holder.satu.setText(isi.getTanggalstart());
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat convetDateFormat = new SimpleDateFormat("dd-MM-YYY");
+        try {
+            date = dateFormat.parse(isi.getTanggalstart());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        holder.satu.setText(convetDateFormat.format(date));
         holder.dua.setText(isi.getNama());
         holder.tiga.setText(isi.getNominal());
 

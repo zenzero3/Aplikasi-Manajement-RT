@@ -95,6 +95,7 @@ public class Step3 extends Fragment implements Step, BlockingStep {
        mrecycleview = v.findViewById(R.id.getimage);
         image = new ArrayList<>();
         des =v.findViewById(R.id.detail);
+        mLayout = new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false);
         fas =v.findViewById(R.id.fasil);
         lok =v.findViewById(R.id.lokasi);
         blo =v.findViewById(R.id.bli);
@@ -111,8 +112,8 @@ public class Step3 extends Fragment implements Step, BlockingStep {
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getcamera();
-                                final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
+                adapter= new Adapter(image);
+                final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
                 dialog.setContentView(R.layout.bottomsheetone);
                 final LinearLayout foto = dialog.findViewById(R.id.kamera);
                 final  TextView back   = dialog.findViewById(R.id.cancel);
@@ -183,78 +184,42 @@ public class Step3 extends Fragment implements Step, BlockingStep {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode != RESULT_CANCELED){
-            if (requestCode == 2) {
-                Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-                ekoa=photo;
-                image.add(ekoa);
-                imagearray.add(ekoa);
-                mrecycleview.setVisibility(View.VISIBLE );
-                mrecycleview.setHasFixedSize(true);
-                mLayout = new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false);
-                adapter= new Adapter(image);
-                mrecycleview.setLayoutManager(mLayout);
-                mrecycleview.setAdapter(adapter);
-            }
-            if (requestCode == 1)
-            { InputStream is = null;
+            if (requestCode == 1) {
+                assert data != null;
                 Uri selectedImage = data.getData();
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), selectedImage);
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                     dwi=bitmap;
                     image.add(dwi);
                     imagearray.add(dwi);
-                    mLayout = new LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false);
+                    adapter.notifyDataSetChanged();
                     mrecycleview.setVisibility(View.VISIBLE );
                     mrecycleview.setHasFixedSize(true);
-                    adapter= new Adapter(image);
                     mrecycleview.setLayoutManager(mLayout);
                     mrecycleview.setAdapter(adapter);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+            if (requestCode == 2)
+            {       Bitmap photo = (Bitmap) data.getExtras().get("data");
+                ekoa=photo;
+                image.add(ekoa);
+                imagearray.add(ekoa);
+                adapter.notifyDataSetChanged();
+                mrecycleview.setVisibility(View.VISIBLE );
+                mrecycleview.setHasFixedSize(true);
+                mrecycleview.setLayoutManager(mLayout);
+                mrecycleview.setAdapter(adapter);
 
             }
         }
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == STORAGE_PERMISSION_CODE && requestCode == camera) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getdata();
-            } else {
-                new AlertDialog.Builder(requireContext())
-                        .setTitle("Warning Permission Needed")
-                        .setMessage("Membutuhkan perizinan aplikasi")
-                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(requireActivity(),
-                                        new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
-                                ActivityCompat.requestPermissions(requireActivity(),
-                                        new String[] {Manifest.permission.CAMERA}, camera);
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package",getActivity().getPackageName(),null);
-                                intent.setData(uri);
-                                startActivity(intent);
-                                dialog.dismiss();
-                            }
-                        })
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .create().show();
-            }
-        } else {
-
-        }
-    }
-
-    private void getdata() {
 
     }
+
 
     @Nullable
     @Override
@@ -419,119 +384,5 @@ public class Step3 extends Fragment implements Step, BlockingStep {
         callback.goToPrevStep();
     }
 
-    private void getcamera() {
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED){
-                getpermissionstorage();
-            }
-            else {
-                requestcamera();
-            }
 
-        }else {
-            getpermissionstorage();
-        }
-    }
-    private void requestcamera() {
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                Manifest.permission.CAMERA)) {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Camera")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            getpermissionstorage();
-                            ActivityCompat.requestPermissions(requireActivity(),
-                                    new String[] {Manifest.permission.CAMERA}, camera);
-                        }
-                    })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(requireActivity(),
-                    new String[] {Manifest.permission.CAMERA}, camera);
-        }
-    }
-    private void getpermissionstorage() {
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if (ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
-                getinternalstorage();
-            }
-            else {
-                requestExternal();
-            }
-        }else {
-            getinternalstorage();
-        }
-    }
-    private void requestExternal() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan Galerry")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            getinternalstorage();
-                            ActivityCompat.requestPermissions(requireActivity(),
-                                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-                        }
-                    })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(requireActivity(),
-                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-        }
-    }
-    private void getinternalstorage() {
-        if (ContextCompat.checkSelfPermission(requireContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
-            getdata();
-        }
-        else {
-            requestinternal();
-        }
-
-    }
-
-
-    private void requestinternal() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Permission needed")
-                    .setMessage("Aplikasi Membutuhkan perizinan internal")
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(requireActivity(),
-                                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
-                            dialog.dismiss();
-                        }
-                    })
-                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create().show();
-        } else {
-            ActivityCompat.requestPermissions(requireActivity(),
-                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, internal);
-        }
-    }
 }

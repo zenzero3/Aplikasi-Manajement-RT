@@ -66,6 +66,7 @@ public class Login  extends AppCompatActivity {
         setContentView(R.layout.login);
         eko = getSharedPreferences("log",Context.MODE_PRIVATE);
         wool = eko.getInt("isi",0);
+        izin = eko.getString("izin","gagal");
         if (masukke == 1){
             if (wool ==0){
                 getpermission();
@@ -86,7 +87,7 @@ public class Login  extends AppCompatActivity {
             public void onClick(View view) {
                 getpermission();
                 if (izin.equals("gagal")){
-
+                    getpermission();
                 }else {
                 login = 1;
                 register =0;
@@ -136,7 +137,7 @@ public class Login  extends AppCompatActivity {
                 register=1;
                 login = 0;
                 if (izin.equals("gagal")){
-                    
+                    getpermission();
                 }else {
                 if (masukke == 1){
                     if (wool == 0){
@@ -501,6 +502,7 @@ public class Login  extends AppCompatActivity {
                 masukke=2;
                 SharedPreferences.Editor editors = eko.edit();
                 editors.putInt("isi", 1);
+                editors.putString("izin","sukses");
                 editors.apply();
                 editors.commit();
                 izin="sukses";

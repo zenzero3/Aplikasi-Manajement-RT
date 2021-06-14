@@ -159,6 +159,7 @@ public class KasRT extends AppCompatActivity {
     }
 
     private void initViewComponents() {
+
         customDialog = new Dialog(KasRT.this);
         customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         customDialog.setContentView(R.layout.alertkastambah);
@@ -172,19 +173,22 @@ public class KasRT extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nominal = ee.getText().toString();
-                int dwi = Integer.parseInt(nominal);
                 namakas = name.getText().toString();
                 if (namakas.equals("")){
-                    Toast.makeText(getApplicationContext(),"Nominal Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
-                }else  if (nominal.equals("")){
                     Toast.makeText(getApplicationContext(),"Nama Dana Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                }else  if (nominal.equals("")){
+                    Toast.makeText(getApplicationContext(),"Nominal Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                 }else {
-                    if (nominal.equals(0)){
+                    int dwi;
+                    if (nominal.equals("0")||nominal.isEmpty()){
                         Toast.makeText(getApplicationContext(),"Nominal Tidak boleh kosong",Toast.LENGTH_LONG).show();
-                    }else if (dwi<=4000){
-                        Toast.makeText(getApplicationContext(),"Minimal Pendanaan Rp 50000 ",Toast.LENGTH_LONG).show();
                     }else {
-                        savedata();
+                        dwi = Integer.parseInt(nominal);
+                        if (dwi<=4000){
+                            Toast.makeText(getApplicationContext(),"Minimal Pendanaan Rp 50000 ",Toast.LENGTH_LONG).show();
+                        }else {
+                            savedata();
+                        }
                     }
 
                 }

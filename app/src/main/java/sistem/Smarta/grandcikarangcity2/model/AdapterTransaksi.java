@@ -41,10 +41,16 @@ public class AdapterTransaksi  extends RecyclerView.Adapter<AdapterTransaksi.Myv
     @Override
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
         Transaksi transaksi =transaksis.get(position);
+        String pending = transaksi.getStatus();
         holder.satum.setText(transaksi.getNamatransaksi());
         holder.dua.setText(transaksi.getNominal());
         holder.tiga.setText(transaksi.getStatus());
-        holder.staut= transaksi.getStatus();
+        if (pending.equals("STATUS_PENDING")|| pending.equals("PENDING")){
+            holder.tiga.setText("PENDING");
+        }else {
+            holder.tiga.setText("SUCCESS");
+        }
+
     }
 
     @Override

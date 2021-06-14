@@ -89,12 +89,14 @@ public class Registerrtpintar_RT extends AppCompatActivity {
     if (masuk.equals("")){
         Toast.makeText(getApplicationContext(),"Belum Memasukan Username",Toast.LENGTH_LONG).show();
         satu.setError("Username Kosong");
-    }
+        ss.setVisibility(View.GONE);
+    }else
     if (masuk.equals(isi)){
         ceklevel(isiid);
-
+        ss.setVisibility(View.GONE);
     }else {
         ss.setVisibility(View.GONE);
+        satu.setError("Username Tidak terdaftar");
         Toast.makeText(getApplicationContext(),"Username Salah",Toast.LENGTH_LONG).show();
 
     }

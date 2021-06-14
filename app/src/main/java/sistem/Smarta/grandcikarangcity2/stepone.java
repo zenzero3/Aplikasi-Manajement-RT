@@ -56,8 +56,7 @@ import static android.app.Activity.RESULT_CANCELED;
 public class stepone extends Fragment implements Step, BlockingStep, AdapterView.OnItemSelectedListener {
     EditText rum,bb,nm;
     SharedPreferences laporan;
-    /*ImageButton poto;*/
-    String rumah,fasilitas,noblok,norumah,lokal;
+    String rumah,fasilitas,noblok,norumah;
     public int one;
     String namalokasi;
     FusedLocationProviderClient lokasi;
@@ -79,7 +78,6 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
         bb.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS );
         bb.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
-       /* poto = v.findViewById(R.id.buttonambil);*/
         final Spinner spinner = v.findViewById(R.id.spinner);
         lokasi= LocationServices.getFusedLocationProviderClient(requireContext());
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(), R.array.kerusakan_array,R.layout.itemoke2);
@@ -97,49 +95,11 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
 
             }
         });
-
-
-
-      /*  lokasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                    fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Location> task) {
-                            Location location = task.getResult();
-                            if (location != null) {
-                                try {
-                                    Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
-                                    List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                                    lokasi.setText(addresses.get(0).getAddressLine(0));
-                                    lokasi.setTextColor(getResources().getColor(R.color.colorbackld));
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        }
-                    });
-                }else {
-                    ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
-                }
-
-            }
-        });*/
-
-
-
         return v;
 
     }
 
     private void getlocation() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            getalert();
-            return;
-        }else
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             Task<Location> task = lokasi.getLastLocation();
             task.addOnSuccessListener(new OnSuccessListener<Location>() {
@@ -164,31 +124,9 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
                     }
                 }
             });
-              }else    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION},44);
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},44);
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                Task<Location> task = lokasi.getLastLocation();
-                task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(final Location location) {
-                        if (location != null){
-                            Geocoder geocoder = new Geocoder(getActivity(),Locale.getDefault());
-                            try {
-                                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                                namalokasi=addresses.get(0).getAddressLine(0);
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-            }
-            else {
-                    getalert();
-            }
+              }else {
+            one =1;
+            getalert();
         }
     }
 
@@ -259,14 +197,12 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
     }
     @Override
     public VerificationError verifyStep() {
-        //return null if the user can go to the next step, create a new VerificationError instance otherwise
         return null;
     }
 
 
     @Override
     public void onError(@NonNull VerificationError error) {
-        //handle error inside of the fragment, e.g. show error on EditText
     }
 
     @Override

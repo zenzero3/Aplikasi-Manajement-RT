@@ -511,12 +511,9 @@ public class Usereditclass  extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode != RESULT_CANCELED){
-            if (requestCode == 2) {
-                Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-                aku.setImageBitmap(photo);
-            }
             if (requestCode == 1)
             {
+                assert data != null;
                 Uri selectedImage = data.getData();
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
@@ -525,6 +522,10 @@ public class Usereditclass  extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+            }
+            else if (requestCode == 2) {
+                Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                aku.setImageBitmap(photo);
             }
         }
     }

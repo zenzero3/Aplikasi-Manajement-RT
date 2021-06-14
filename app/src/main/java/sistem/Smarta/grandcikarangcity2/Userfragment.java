@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -44,6 +51,7 @@ public class Userfragment extends Fragment {
     String gambarpasang;
     String path,idem;
     CircleImageView aku;
+    Handler handler ;
     TextView emails,user,hps,namalengkaps;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class Userfragment extends Fragment {
         aku= root.findViewById(R.id.profile_image);
         emails= root.findViewById(R.id.mail);
          user = root.findViewById(R.id.username);
+        handler= new Handler();
          hps = root.findViewById(R.id.hps);
          namalengkaps = root.findViewById(R.id.namalengpa);
         getdata();
@@ -139,7 +148,30 @@ public class Userfragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(requireActivity().getApplicationContext(), "Mohon Periksa jaringan anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    onPause();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            onResume();
+                        }
+                    },30000);
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibut mohon menunggu beberapa saat",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof ParseError) {
+                    progressBar.dismiss();
+                }
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
@@ -199,7 +231,30 @@ public class Userfragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(requireActivity().getApplicationContext(), "Mohon Periksa jaringan anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    onPause();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            onResume();
+                        }
+                    },30000);
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibut mohon menunggu beberapa saat",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof ParseError) {
+                    progressBar.dismiss();
+                }
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
