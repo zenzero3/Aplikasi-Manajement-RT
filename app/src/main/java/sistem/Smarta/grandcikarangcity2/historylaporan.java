@@ -102,7 +102,7 @@ public class historylaporan extends AppCompatActivity {
                                        else {
                                            datahis.setStatus("Selesai");
                                        }
-                                       datahis.setTanggal(data.getString("created_at"));
+                                       datahis.setTanggal(data.getString("updated_at"));
                                        history.add(datahis);
                                     }
                                     mAdapter = new Adapter_history(historylaporan.this, (ArrayList<datahistory>) history);

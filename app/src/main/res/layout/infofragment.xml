@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
-            android:text="Informasi RT Manajement"
+            android:text="Informasi RT Management"
             android:textColor="#F3F0F0"
             android:textSize="19sp"
             android:textStyle="bold" />

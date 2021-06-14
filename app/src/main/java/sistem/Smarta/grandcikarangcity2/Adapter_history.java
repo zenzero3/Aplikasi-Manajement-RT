@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,10 +38,10 @@ public class Adapter_history extends RecyclerView.Adapter<Adapter_history.Myview
 
     @Override
     public void onBindViewHolder(@NonNull Myviewholder holder, int position) {
-     datahistory isi= datahistoriesl.get(position);
         date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        SimpleDateFormat convetDateFormat = new SimpleDateFormat("dd-MM-YY");
+     datahistory isi= datahistoriesl.get(position);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat convetDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
             date = dateFormat.parse(isi.getTanggal());
         } catch (ParseException e) {

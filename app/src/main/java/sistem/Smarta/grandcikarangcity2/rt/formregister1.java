@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import kotlin.text.Regex;
 import sistem.Smarta.grandcikarangcity2.R;
 import sistem.Smarta.grandcikarangcity2.model.AppHelper;
 import sistem.Smarta.grandcikarangcity2.model.VolleyMultipartRequest;
@@ -76,6 +77,7 @@ public class formregister1 extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               Regex regex =new Regex("^08[0-9]{9,}$");
                 String isi =password.getEditText().getText().toString();
                 int ik= isi.length();
                 if (email.getEditText().getText().toString().isEmpty()){
@@ -99,7 +101,7 @@ public class formregister1 extends AppCompatActivity {
                     hp.setErrorEnabled(true);
                     hp.setError("Masukan No HP");
                 }else if (Patterns.EMAIL_ADDRESS.matcher(email.getEditText().getText().toString()).matches()) {
-                    if (Patterns.PHONE.matcher(hp.getEditText().getText().toString()).matches()) {
+                    if (regex.toPattern().matcher(hp.getEditText().getText().toString()).matches()) {
 
                         if (ik<8){
                             Toast.makeText(formregister1.this,"Password Harus Lebih  Dari 8 Karakter",Toast.LENGTH_LONG).show();

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -53,12 +54,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.text.Regex;
 import sistem.Smarta.grandcikarangcity2.model.AppHelper;
 import sistem.Smarta.grandcikarangcity2.model.VolleyMultipartRequest;
 import sistem.Smarta.grandcikarangcity2.model.VolleySingleton;
@@ -69,6 +72,7 @@ import sistem.Smarta.grandcikarangcity2.rtpintar.warga.HomeWarga;
 public class Usereditclass  extends AppCompatActivity {
     TextInputLayout user,email,pase,noh,namalengkapo;
     CircleImageView aku;
+    Regex regex;
     int i = 0;
     private int camera = 1;
     String path,idem,gambarpasang,id_image;
@@ -95,6 +99,7 @@ public class Usereditclass  extends AppCompatActivity {
         ek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                regex =new Regex("^08[0-9]{9,}$");
                 usernames = user.getEditText().getText().toString();
                 pass = pase.getEditText().getText().toString();
                 namas =namalengkapo.getEditText().getText().toString();
@@ -123,7 +128,7 @@ public class Usereditclass  extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     noh.setError("NO hp Kosong");
                 }else if (Patterns.EMAIL_ADDRESS.matcher(email.getEditText().getText().toString()).matches()) {
-                    if (Patterns.PHONE.matcher(noh.getEditText().getText().toString()).matches()) {
+                    if (regex.toPattern().matcher(noh.getEditText().getText().toString()).matches()) {
 
                         if (ik<8){
                             Toast.makeText(Usereditclass.this,"Password Harus Lebih  Dari 8 Karakter",Toast.LENGTH_LONG).show();
@@ -509,24 +514,30 @@ public class Usereditclass  extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+if (data!=null){
         if(resultCode != RESULT_CANCELED){
             if (requestCode == 1)
             {
                 assert data != null;
                 Uri selectedImage = data.getData();
+                if (selectedImage!=null){
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
+                    InputStream inputStream = getContentResolver().openInputStream(selectedImage);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     aku.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
                 }
 
             }
             else if (requestCode == 2) {
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
                 aku.setImageBitmap(photo);
+                }
             }
+        }
         }
     }
     public void onBackPressed() {

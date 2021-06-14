@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import kotlin.text.Regex;
 import sistem.Smarta.grandcikarangcity2.MainActivity;
 import sistem.Smarta.grandcikarangcity2.R;
 import sistem.Smarta.grandcikarangcity2.Usereditclass;
@@ -321,6 +322,7 @@ buktinpwp.setOnClickListener(new View.OnClickListener() {
         daftar.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        Regex regex =new Regex("^08[0-9]{9,}$");
         int ix =14;
         namalengkap = namalengkp.getText().toString();
         desa = desah.getText().toString();

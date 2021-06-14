@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -56,6 +57,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -70,6 +72,7 @@ import sistem.Smarta.grandcikarangcity2.model.VolleySingleton;
 import sistem.Smarta.grandcikarangcity2.rt.Login;
 
 import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 public class Step3 extends Fragment implements Step, BlockingStep {
     String user;
@@ -145,8 +148,9 @@ public class Step3 extends Fragment implements Step, BlockingStep {
                     public void onClick(View view) {
                         i=2;
                         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(intent, 2);
-
+                        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                            startActivityForResult(intent, 2);
+                        }
                         dialog.dismiss();
                     }
                 });
@@ -182,13 +186,14 @@ public class Step3 extends Fragment implements Step, BlockingStep {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if (data!=null){
         if(resultCode != RESULT_CANCELED){
             if (requestCode == 1) {
-                assert data != null;
                 Uri selectedImage = data.getData();
+                if (selectedImage!=null){
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+                    InputStream inputStream = getActivity().getContentResolver().openInputStream(selectedImage);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     dwi=bitmap;
                     image.add(dwi);
                     imagearray.add(dwi);
@@ -200,9 +205,12 @@ public class Step3 extends Fragment implements Step, BlockingStep {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                }
             }
             if (requestCode == 2)
-            {       Bitmap photo = (Bitmap) data.getExtras().get("data");
+            {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                if (photo!=null){
                 ekoa=photo;
                 image.add(ekoa);
                 imagearray.add(ekoa);
@@ -211,8 +219,11 @@ public class Step3 extends Fragment implements Step, BlockingStep {
                 mrecycleview.setHasFixedSize(true);
                 mrecycleview.setLayoutManager(mLayout);
                 mrecycleview.setAdapter(adapter);
-
             }
+            }
+        }
+    }else {
+            Toast.makeText(requireContext(),"Gagal ambil foto",Toast.LENGTH_LONG).show();
         }
     }
     @Override
