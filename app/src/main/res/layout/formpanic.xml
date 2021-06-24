@@ -65,6 +65,7 @@
         android:textColor="@color/common_google_signin_btn_text_light_default"
         android:textSize="18dp"
         android:textStyle="normal" />
+
     <TextView
         android:id="@+id/duaperingatan"
         android:layout_width="match_parent"
@@ -72,14 +73,13 @@
         android:layout_below="@+id/kanicdua"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:textSize="40dp"
         android:fontFamily="@font/abeezee"
-        android:textStyle="bold"
         android:gravity="center"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:text="Tetap Tenang"
-        android:visibility="gone"
-        />
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/duaisiperingatan"
@@ -98,7 +98,7 @@
         android:textSize="18dp"
         android:textStyle="normal"
 
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/tutupsalahkan"

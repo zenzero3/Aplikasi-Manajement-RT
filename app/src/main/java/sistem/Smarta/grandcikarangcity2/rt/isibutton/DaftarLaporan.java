@@ -41,7 +41,7 @@ public class DaftarLaporan extends AppCompatActivity {
         setContentView(R.layout.activity_daftarlaporan);
         LottieAnimationView lottieAnimationView= findViewById(R.id.lotielose);
         lottieAnimationView.setVisibility(View.GONE);
-        ImageButton imageButton = findViewById(R.id.backbuttwarga);
+        ImageButton imageButton = findViewById(R.id.backbutt);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

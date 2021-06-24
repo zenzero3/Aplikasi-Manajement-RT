@@ -168,7 +168,7 @@ public class Homert extends Fragment {
     @Override
     public void onClick(View v) {
         final AlertDialog.Builder alert= new AlertDialog.Builder(getActivity());
-        alert.setTitle("Anda Yakin Ingin Kembali Ke Menu RT Manajement");
+        alert.setTitle("Anda Yakin Ingin Kembali Ke Aplikasi Kabupaten Kebumen");
         alert.setCancelable(false);
 
         alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {

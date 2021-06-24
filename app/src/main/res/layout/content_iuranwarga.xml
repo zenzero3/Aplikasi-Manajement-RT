@@ -38,7 +38,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Daftar iuran warga"
                         android:textAlignment="center"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -57,7 +57,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
                         android:text="Untuk saat ini tidak Ada Data Iuran"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:id="@+id/pathone"
@@ -80,7 +80,7 @@
                             android:fontFamily="@font/hk"
                             android:gravity="center"
                             android:text="Tanggal"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                             android:fontFamily="@font/hk"
                             android:gravity="center"
                             android:text="Nama Iuran"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                             android:fontFamily="@font/hk"
                             android:gravity="center"
                             android:text="Nominal Iuran"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -139,7 +139,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
                         android:text="History Iuran Warga"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -155,7 +155,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="center"
                         android:text="Untuk saat ini tidak Ada Data"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/iuranwargaok"

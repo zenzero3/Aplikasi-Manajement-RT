@@ -2,8 +2,10 @@ package sistem.Smarta.grandcikarangcity2.rtpintar.warga.ButtonWartga.adpterbutto
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -278,7 +280,7 @@ public class Adapterhistory  extends RecyclerView.Adapter<Adapterhistory.MyViewH
     }
 
     private void createpdf(String namaju, String nama, String tempatlahir, String tgllahir, String nik, String nikah, String jk, String kerja, String kk, String alama, String agam, String name, String desa, String kelurahan, String kecamatan, String provinsi, String nort, String norw, String date) throws ParseException {
-
+        int ss;
         PdfDocument pdfDocument  = new PdfDocument();
         Paint title = new Paint();
         Date format;
@@ -373,13 +375,20 @@ public class Adapterhistory  extends RecyclerView.Adapter<Adapterhistory.MyViewH
         try {
             pdfDocument.writeTo(new FileOutputStream(myFile));
             Toast.makeText(context, "Surat Pengajuan/Keterangan berhasil Tersimpan ", Toast.LENGTH_LONG).show();
+            ss =1;
         }
         catch (Exception e){
             e.printStackTrace();
+            ss =2;
             Toast.makeText(context, "PDF Gagal", Toast.LENGTH_LONG).show();
         }
         pdfDocument.close();
-
+        if (ss == 1){
+            getpdf();
+        }
+    }
+    private void getpdf() {
+        context.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS));
     }
 
 }

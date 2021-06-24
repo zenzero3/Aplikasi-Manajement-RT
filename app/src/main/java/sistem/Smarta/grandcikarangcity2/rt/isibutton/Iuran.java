@@ -547,9 +547,14 @@ public class Iuran extends AppCompatActivity {
                                 if (message.equals("get rt")) {
                                     String isi = data.getString("id").trim();
                                     String idesa= data.getString("desa").trim();
+                                    if (idesa.equals("Tidak Ada Pedukuhan")){
+                                        idesa=data.getString("kelurahan").trim();
+                                    }else {
+
+                                    }
                                     iuran(isi);
                                     isiisd=isi;
-                                    koteka.setText("List Iuran Desa "+idesa);
+                                    koteka.setText("List Iuran "+idesa);
                                 }
                             }else {
                                 Toast.makeText(Iuran.this, message, Toast.LENGTH_SHORT).show();

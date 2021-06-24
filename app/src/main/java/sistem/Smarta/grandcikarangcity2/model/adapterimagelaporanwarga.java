@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,9 +38,8 @@ public class adapterimagelaporanwarga  extends RecyclerView.Adapter<adapterimage
      imagelapwargadarirt isi =datahistoriesl.get(position);
         String gambarpasang ="http://gccestatemanagement.online/public/gallery/"+isi.getPath();
         Picasso.get() .load(gambarpasang)
-                .fit()
                 .into(holder.one);
-
+        holder.one.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     }
 
     @Override

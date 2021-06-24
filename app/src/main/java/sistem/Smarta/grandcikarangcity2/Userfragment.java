@@ -52,6 +52,7 @@ public class Userfragment extends Fragment {
     String path,idem;
     CircleImageView aku;
     Handler handler ;
+    ProgressDialog progressBar;
     TextView emails,user,hps,namalengkaps;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class Userfragment extends Fragment {
         handler= new Handler();
          hps = root.findViewById(R.id.hps);
          namalengkaps = root.findViewById(R.id.namalengpa);
-        getdata();
+        progressBar = new ProgressDialog(getActivity());
         onResume();
         out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +105,6 @@ public class Userfragment extends Fragment {
 
     private void getdatauser(String id) {
         String UrlLogin="http://gccestatemanagement.online/public/api/register/"+id;
-        final ProgressDialog progressBar = new ProgressDialog(getActivity());
         progressBar.setMessage("Prosess");
         progressBar.show();
         StringRequest stringRequest= new StringRequest(Request.Method.GET, UrlLogin,
@@ -132,9 +132,7 @@ public class Userfragment extends Fragment {
                                     namalengkaps.setText(fulluser);
                                     hps.setText(hp);
                                     getImageurl(emage);
-
                                     Log.d("isi",emage);
-                                    progressBar.dismiss();
 
                                 }
                             }else {
@@ -162,7 +160,7 @@ public class Userfragment extends Fragment {
                             onResume();
                         }
                     },30000);
-                    Toast.makeText(requireContext(),"Maaf Jaringan sibut mohon menunggu beberapa saat",
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat",
                             Toast.LENGTH_LONG).show();
                     progressBar.dismiss();
                 } else if (error instanceof NetworkError) {
@@ -189,9 +187,6 @@ public class Userfragment extends Fragment {
     }
 
     private void getImageurl(String image) {
-        final ProgressDialog progressBar = new ProgressDialog(getActivity());
-        progressBar.setMessage("Prosess");
-        progressBar.show();
         String UrlLogin="http://gccestatemanagement.online/public/api/image/"+image;
         StringRequest stringRequest= new StringRequest(Request.Method.GET, UrlLogin,
                 new Response.Listener<String>() {
@@ -206,6 +201,10 @@ public class Userfragment extends Fragment {
 
                             if (status.equals("get")) {
                                 if (message.equals("Get data")) {
+                                    int iko=jsonarray.length();
+                                    if (iko==0){
+                                        progressBar.dismiss();
+                                    }else {
                                     for(int i=0; i < jsonarray.length(); i++) {
                                         JSONObject jonobject = jsonarray.getJSONObject(i);
                                         idem=jonobject.getString("id").trim();
@@ -218,7 +217,7 @@ public class Userfragment extends Fragment {
                                         progressBar.dismiss();
                                     }
 
-
+                                }
                                 }
                             }else {
                                 Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -47,6 +48,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -75,12 +77,14 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
     RecyclerView mrecycleview;
     RecyclerView.LayoutManager mLayout;
     RecyclerView.Adapter adapter;
+    ProgressDialog progressBar;
     int i = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragmentttwolaporanwarga, container, false);
         maslaha = getActivity().getSharedPreferences("laporanwarga", Context.MODE_PRIVATE);
         imagearray = new ArrayList<Bitmap>();
+    progressBar = new ProgressDialog(requireContext());
         ImageButton tambah = v.findViewById(R.id.imageButton2);
         mrecycleview = v.findViewById(R.id.getimage);
         image = new ArrayList<>();
@@ -183,11 +187,15 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
 
                             if (message.equals("Post Created")) {
                                 if (status.equals("true")) {
+                                    int j = 0;
                                     String id =data.getString("id").trim();
                                     for (int i = 0;i< imagearray.size();i++){
                                         Bitmap as = imagearray.get(i);
                                         uploadimage(id,as,callback);
+                                        j=j+i;
                                     }
+                                    close(callback);
+
                                 }
                             }else {
                                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
@@ -223,9 +231,30 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
 
     }
 
+    private void close(final StepperLayout.OnCompleteClickedCallback callback) {
+        final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
+        dialog.setContentView(R.layout.bottomsheetdua);
+        Button selesai = dialog.findViewById(R.id.selesai);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+        assert selesai != null;
+        selesai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor= maslaha.edit();
+                editor.clear();
+                editor.commit();
+                editor.apply();
+                callback.complete();
+                dialog.dismiss();
+                getActivity().finish();
+            }
+        });
+    }
+
     private void uploadimage(final String id, Bitmap as, final StepperLayout.OnCompleteClickedCallback callback) {
         final Drawable d = new BitmapDrawable(getResources(), as);
-        final ProgressDialog progressBar = new ProgressDialog(requireContext());
         progressBar.setMessage("Prosess");
         progressBar.show();
         String UrlLogin="http://gccestatemanagement.online/public/api/imagewarga";
@@ -244,25 +273,6 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
                                     progressBar.dismiss();
                                     j= imagearray.size();
                                     callback.complete();
-                                    final BottomSheetDialog dialog = new BottomSheetDialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
-                                    dialog.setContentView(R.layout.bottomsheetdua);
-                                    Button selesai = dialog.findViewById(R.id.selesai);
-                                    dialog.setCanceledOnTouchOutside(false);
-                                    Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                                    dialog.show();
-                                    assert selesai != null;
-                                    selesai.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            SharedPreferences.Editor editor= maslaha.edit();
-                                            editor.clear();
-                                            editor.commit();
-                                            editor.apply();
-                                            callback.complete();
-                                            dialog.dismiss();
-                                            getActivity().finish();
-                                        }
-                                    });
                                 }
                             }else {
                                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
@@ -325,8 +335,10 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode != RESULT_CANCELED){
+            if (data!=null){
             if (requestCode == 2) {
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
                 ekoa=photo;
                 image.add(ekoa);
                 imagearray.add(ekoa);
@@ -337,11 +349,17 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
                 mrecycleview.setLayoutManager(mLayout);
                 mrecycleview.setAdapter(adapter);
             }
-            if (requestCode == 1)
+                else {
+                    Toast.makeText(requireContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
+            }
+            }
+            else if (requestCode == 1)
             {
                 Uri selectedImage = data.getData();
+                if (selectedImage!=null){
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), selectedImage);
+                    InputStream inputStream = getActivity().getContentResolver().openInputStream(selectedImage);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     dwi=bitmap;
                     image.add(dwi);
                     imagearray.add(dwi);
@@ -355,7 +373,13 @@ public class fragmenttwo extends Fragment implements Step, BlockingStep {
                     e.printStackTrace();
                 }
 
+            }else {
+                    Toast.makeText(requireContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
+                }
+
+
             }
+        }
         }
     }
 }

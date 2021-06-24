@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bgrtpintar"
     >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eko"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -21,27 +22,41 @@
         <ImageButton
             android:id="@+id/backbutt"
             android:layout_width="51dp"
-            android:layout_height="35dp"
+            android:layout_height="0dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/chevron_left" />
+            android:src="@drawable/chevron_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginStart="75dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/backbutt"
             android:drawableLeft="@drawable/ic_settings_gears_1"
-            android:gravity="center_horizontal"
+            android:padding="@dimen/spacing_medium"
             android:text="  Registrasi "
             android:textColor="#F3F0F0"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.37"
+            app:layout_constraintStart_toEndOf="@+id/backbutt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
+            tools:ignore="MissingConstraints" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/ero"
@@ -63,14 +78,16 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="Form Registasi "
+            android:fontFamily="@font/poppinsregular"
+            android:text="Form Registrasi "
             android:textColor="#1D5F15"
-            android:textSize="15sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizePresetSizes="1sp"
+            android:autoSizeTextType="uniform"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -99,13 +116,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:paddingStart="15dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppinsregular"
                     android:text="Daftar"
                     android:textColor="#FFFFFF"
-                    android:textSize="15sp" />
+                 />
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -117,17 +135,21 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bgtwo"
-                android:fontFamily="@font/poppins_bold"
-                android:hint="Masukan Username"
-                android:textSize="12sp">
-                >
+                android:fontFamily="@font/poppinsregular"
+                android:hint="Masukan username"
+                android:textColorHint="@color/colorbackld"
+                app:hintTextColor="@color/colorbackld"
+               >
+
 
                 <EditText
+                    android:fontFamily="@font/poppinsregular"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
                     android:inputType="textPersonName"
-                    android:textSize="12sp" />
+                    android:textSize="15sp"
+
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,15 +162,18 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bgtwo"
+                android:textColorHint="@color/colorbackld"
+                app:hintTextColor="@color/colorbackld"
                 android:hint="Masukan Email">
                 >
 
                 <EditText
+                    android:fontFamily="@font/poppinsregular"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="15sp"
                     android:inputType="textEmailAddress"
-                    android:textSize="12sp" />
+                   />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,6 +185,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
+                android:textColorHint="@color/colorbackld"
+                app:hintTextColor="@color/colorbackld"
                 android:background="@drawable/bgtwo"
                 android:hint="Masukan Nama Lengkap">
                 >
@@ -167,9 +194,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
-                    android:inputType="textPersonName"
-                    android:textSize="12sp" />
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsregular"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,15 +210,18 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bgtwo"
                 android:hint="Masukan Password"
+                android:textColorHint="@color/colorbackld"
+                app:hintTextColor="@color/colorbackld"
                 app:passwordToggleEnabled="true">
                 >
 
                 <EditText
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsregular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
                     android:inputType="textPassword"
-                    android:textSize="12sp" />
+                     />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -203,6 +233,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
+                android:textColorHint="@color/colorbackld"
+                app:hintTextColor="@color/colorbackld"
                 android:background="@drawable/bgtwo"
                 android:hint="Masukan No Hp Exp 081xxxxx">
                 >
@@ -210,24 +242,26 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
+                    android:maxLength="12"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppinsregular"
                     android:inputType="phone"
-                    android:textSize="12sp" />
+                   />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/daftar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_marginStart="55dp"
                 android:layout_marginEnd="55dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bgregisterbutton"
-                android:fontFamily="@font/poppins_bold"
+                android:fontFamily="@font/poppinsregular"
                 android:text="Daftar"
+                android:textSize="18sp"
                 android:textColor="#FADA10"
-                android:textSize="12sp"
                 android:theme="@style/Animation.Design.BottomSheetDialog" />
 
         </LinearLayout>

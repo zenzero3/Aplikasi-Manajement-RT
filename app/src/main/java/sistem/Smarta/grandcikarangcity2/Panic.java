@@ -200,6 +200,7 @@ public class Panic extends AppCompatActivity {
         }
         if (counter >= 3) {
             senddata();
+            finish();
             panikjalan.setVisibility(View.VISIBLE);
             panikc.setVisibility(View.GONE);
             satu.setVisibility(View.GONE);

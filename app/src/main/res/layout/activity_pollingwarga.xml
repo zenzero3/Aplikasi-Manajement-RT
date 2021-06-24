@@ -34,7 +34,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="PollingWarga"
+            android:text="Informasi Ketua RT"
             android:textColor="#F3F0F0"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -84,7 +84,7 @@
                         android:gravity="center"
                         android:textColor="@color/ms_black"
                         android:text="Lampirkan  Gambar / Foto"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,9 +100,9 @@
                         android:layout_height="wrap_content"
 
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Nama Poling"
+                        android:text="Nama Informasi"
                         android:textColor="@color/ms_black"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/namepolling"
@@ -113,7 +113,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:inputType="textCapSentences"
                         android:maxLines="1"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Deskripsi"
                         android:textColor="@color/ms_black"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/deskrippolling"
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:maxLines="3" />
 
                     <TextView
@@ -140,9 +140,9 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Kategori Poling"
+                        android:text="Kategori Informasi"
                         android:textColor="@color/ms_black"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/kategorisatu"
@@ -210,10 +210,10 @@
                             android:layout_marginBottom="5dp"
                             android:background="@drawable/bgtwo"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="LIst Polling"
+                            android:text="LIst Info RT"
                             android:textColor="@color/colorbackld"
                             android:textSize="12sp"
-                            android:visibility="gone" />
+                            android:visibility="visible" />
                     </LinearLayout>
 
                 </LinearLayout>

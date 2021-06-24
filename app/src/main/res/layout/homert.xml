@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,40 +11,48 @@
         android:id="@+id/backing"
         android:layout_width="50dp"
         android:layout_height="49dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:src="@drawable/chevron_left" />
+        android:src="@drawable/chevron_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logos2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/backing"
+        android:layout_width="210dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_cikarang" />
+        android:src="@drawable/kebumenlogo"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_below="@id/logos2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-5dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="5dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/logos2"
+        app:layout_constraintEnd_toEndOf="@+id/logos2" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView5"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="100dp">
+        android:id="@+id/nestedScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="24dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,8 +91,8 @@
                         android:layout_weight="12"
                         android:fontFamily="@font/poppins_bold"
                         android:gravity="left"
-                        android:textColor="#393939"
                         android:text="Undangan Warga"
+                        android:textColor="#393939"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -112,9 +120,9 @@
                     android:orientation="horizontal" />
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal"
                     android:weightSum="3">
@@ -139,10 +147,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="10sp"
-                            android:textColor="#393939"
                             android:fontFamily="@font/poppins_bold"
-                            android:text="Iuran" />
+                            android:text="Iuran"
+                            android:textColor="#393939"
+                            android:textSize="10sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -163,11 +171,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="10sp"
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
+                            android:text="Surat RT"
                             android:textColor="#393939"
-                            android:text="Surat RT" />
+                            android:textSize="10sp" />
                     </LinearLayout>
 
 
@@ -192,9 +200,9 @@
                             android:layout_gravity="center"
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
+                            android:text="Pengurus"
                             android:textColor="#393939"
-                            android:textSize="10sp"
-                            android:text="Pengurus" />
+                            android:textSize="10sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -267,7 +275,7 @@
                             android:layout_gravity="center_horizontal"
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
-                            android:text=" Polling Warga"
+                            android:text="Info Ketua RT"
                             android:textAlignment="center"
                             android:textColor="#393939"
                             android:textSize="10sp"
@@ -1254,7 +1262,12 @@
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:src="@drawable/ic_digita" />
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_digita"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logos2" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,7 +74,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Umur Anggota Keluarga"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -96,7 +96,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Status Dalam KK"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -118,7 +118,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="NIK"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -133,7 +133,7 @@
                         android:inputType="number"
                         android:paddingStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -148,7 +148,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Nama"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -162,7 +162,7 @@
                         android:inputType="textPersonName"
                         android:layout_marginEnd="5dp"
                         android:paddingStart="5dp"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -178,7 +178,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Jenis Kelamin"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -195,7 +195,7 @@
                             android:checked="false"
                             android:fontFamily="@font/hk"
                             android:text="Laki-Laki"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
 
                         <RadioButton
                             android:id="@+id/perm"
@@ -205,7 +205,7 @@
                             android:checked="false"
                             android:fontFamily="@font/hk"
                             android:text="Perempuan"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -222,7 +222,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Agama"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -247,7 +247,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Tempat Lahir"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -268,7 +268,7 @@
                         android:drawableRight="@drawable/ic_menu_send"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Tanggal Lahir"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tanggallahi"
@@ -278,7 +278,7 @@
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/bgtwo"
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:visibility="gone" />
 
                 </LinearLayout>
@@ -295,7 +295,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Status Pernikahan"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -317,7 +317,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Pekerjaan"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -339,7 +339,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Pendidikan Terakhir"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -361,7 +361,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Status Tempat Tinggal"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner

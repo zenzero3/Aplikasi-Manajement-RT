@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eko"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -16,22 +16,29 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
-            android:text="Informasi RT Management"
+            android:layout_toEndOf="@+id/backbutt"
+            android:gravity="center"
+            android:text="Informasi Admin"
             android:textColor="#F3F0F0"
             android:textSize="19sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/isikosonginfoserver"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/eko"
@@ -43,14 +50,17 @@
         app:lottie_loop="true"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/loli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/eko"
-        android:layout_marginTop="5dp"
+        >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inforecy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
         />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

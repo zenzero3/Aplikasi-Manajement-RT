@@ -376,20 +376,29 @@ buktinpwp.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+            if (data!=null){
         if(resultCode != RESULT_CANCELED){
             if (requestCode == 2) {
-                stipbuktikk ="ada";
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
+                    stipbuktikk ="ada";
                 Bitmap.createScaledBitmap(photo,60,800,true);
                 buktikk.setImageBitmap(photo);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar Kartu keluarga",Toast.LENGTH_LONG).show();
+                }
             }else if (requestCode == 3) {
-                stripbuktiktp = "ada";
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-                buktiktp.setImageBitmap(photo);
+                if (photo!=null){
+                    stripbuktiktp = "ada";
+                buktiktp.setImageBitmap(photo);}
+                else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar KTP",Toast.LENGTH_LONG).show();
+                }
             }else if (requestCode == 4) {
 
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
                 buktinpwp.setImageBitmap(photo);
                 dialosg = new BottomSheetDialog(Registerrtformpintar.this,R.style.CustomBottomSheetDialogTheme);
                 dialosg.setContentView(R.layout.bottomsheetnpwp);
@@ -412,8 +421,10 @@ buktinpwp.setOnClickListener(new View.OnClickListener() {
                         }
                     }
                 });
+                }
             }
         }
+            }
     }
 
     private void ceklevel(String id) {

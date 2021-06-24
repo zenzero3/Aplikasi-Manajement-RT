@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".historylaporan" >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eko"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -20,30 +20,40 @@
 
         <ImageButton
             android:id="@+id/backbutt"
-            android:layout_width="47dp"
-            android:layout_height="37dp"
+            android:layout_width="51dp"
+            android:layout_height="0dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/chevron_left" />
+            android:src="@drawable/chevron_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="15dp"
-            android:ems="9"
-            android:fontFamily="@font/hk"
-            android:gravity="center"
-            android:text="Histori Laporan"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_toEndOf="@+id/backbutt"
+            android:padding="@dimen/spacing_medium"
+            android:text="  Histori Laporan "
             android:textColor="#F3F0F0"
-            android:textSize="18sp"
+            android:textSize="19sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.37"
+            app:layout_constraintStart_toEndOf="@+id/backbutt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
+            tools:ignore="MissingConstraints" />
 
-            />
-
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/dwiko"
@@ -61,7 +71,7 @@
             android:fontFamily="@font/hk"
             android:gravity="center"
             android:text="Tanggal"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -70,7 +80,7 @@
             android:fontFamily="@font/hk"
             android:gravity="center"
             android:text="Deskripsi Masalah"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -79,7 +89,7 @@
             android:fontFamily="@font/hk"
             android:gravity="center"
             android:text="Status"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

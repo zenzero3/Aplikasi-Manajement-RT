@@ -283,25 +283,35 @@ public class Wargaregisterone extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if (data!= null){
         if(resultCode != RESULT_CANCELED){
             if (requestCode == 2) {
-                stipbuktikk ="ada";
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!= null){
+                    stipbuktikk ="ada";
                 Bitmap.createScaledBitmap(photo,60,800,true);
-                buktikk.setImageBitmap(photo);
+                buktikk.setImageBitmap(photo);}
+                else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar Kartu keluarga",Toast.LENGTH_LONG).show();
+                }
             }else if (requestCode == 3) {
-                stripbuktiktp = "ada";
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
+                stripbuktiktp = "ada";
                 buktiktp.setImageBitmap(photo);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar KTP",Toast.LENGTH_LONG).show();
+                }
             }else if (requestCode == 4) {
 
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
                 buktinpwp.setImageBitmap(photo);
-                dialosg = new BottomSheetDialog(Wargaregisterone.this,R.style.CustomBottomSheetDialogTheme);
+                dialosg = new BottomSheetDialog(Wargaregisterone.this, R.style.CustomBottomSheetDialogTheme);
                 dialosg.setContentView(R.layout.bottomsheetnpwp);
-                final EditText isiidnpwp= dialosg.findViewById(R.id.editTextTextPersonName);
-                Button apply      = dialosg.findViewById(R.id.button6);
+                final EditText isiidnpwp = dialosg.findViewById(R.id.editTextTextPersonName);
+                Button apply = dialosg.findViewById(R.id.button6);
                 dialosg.setCancelable(false);
                 dialosg.setCanceledOnTouchOutside(false);
                 dialosg.show();
@@ -309,10 +319,10 @@ public class Wargaregisterone extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         int i = isiidnpwp.getText().length();
-                        if (isiidnpwp.getText().toString().equals("")||i<14){
-                            Toast.makeText(getApplicationContext(),"No Npwp Salah",Toast.LENGTH_LONG).show();
+                        if (isiidnpwp.getText().toString().equals("") || i < 14) {
+                            Toast.makeText(getApplicationContext(), "No Npwp Salah", Toast.LENGTH_LONG).show();
                             isiidnpwp.setError("Harap Masukan No NPWP yang benar");
-                        }else {
+                        } else {
                             stripbuktinpwp = "ada";
                             idnp = isiidnpwp.getText().toString();
                             dialosg.dismiss();
@@ -320,6 +330,11 @@ public class Wargaregisterone extends AppCompatActivity {
                     }
                 });
             }
+            }
+        }
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
         }
     }
     private void userkeluarga() {

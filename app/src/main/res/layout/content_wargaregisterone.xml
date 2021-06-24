@@ -6,21 +6,40 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ImageView
-        android:id="@+id/logos"
+        android:id="@+id/logos3"
+        android:layout_width="wrap_content"
+        android:layout_height="132dp"
+        android:layout_below="@+id/inilho2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="72dp"
+        android:src="@drawable/kebumenlogo"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/inilho2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:scaleType="center"
-        android:src="@drawable/ic_rtdigital" />
+        android:layout_marginStart="2dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="-2dp"
+        android:fontFamily="@font/crete_round"
+        android:gravity="center"
+        android:text="Registrasi Kepala Keluarga"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logos"
+        android:layout_below="@+id/logos3"
         android:layout_marginTop="15dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
@@ -74,7 +93,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="No KK"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -87,7 +106,7 @@
                         android:hint="Masukan No KK"
                         android:inputType="number"
                         android:paddingStart="5dp"
-                        android:textSize="12sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -102,7 +121,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="NIK"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -112,7 +131,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/bgtwo"
                         android:hint="Masukan Nik"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/poppins_bold"
                         android:inputType="number"
                         android:paddingStart="5dp" />
@@ -130,7 +149,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Nama"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"/>
 
                     <EditText
@@ -138,7 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/poppins_bold"
                         android:background="@drawable/bgtwo"
                         android:hint="Masukan Nama Lengkap"
@@ -159,7 +178,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Jenis Kelamin"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <RadioGroup
@@ -202,7 +221,7 @@
                         android:layout_marginStart="10dp"
                         android:text="Nomor HP"
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -210,7 +229,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/poppins_bold"
                         android:background="@drawable/bgtwo"
                         android:hint="Nomor HP (+62)"
@@ -231,7 +250,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Email"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -244,7 +263,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:paddingStart="5dp" />
                 </LinearLayout>
 
@@ -260,7 +279,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Agama"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -285,7 +304,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Tempat Lahir"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -305,7 +324,7 @@
                         android:drawableRight="@drawable/ic_menu_send"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Tanggal Lahir"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tanggallahi"
@@ -314,7 +333,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/bgtwo"
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:visibility="gone" />
 
                 </LinearLayout>
@@ -331,7 +350,7 @@
                         android:layout_marginStart="10dp"
                         android:text="Status Pernikahan"
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -353,7 +372,7 @@
                         android:layout_marginStart="10dp"
                         android:text="Pekerjaan"
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -375,7 +394,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Pendidikan Terakhir"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -397,7 +416,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Status Tempat Tinggal"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Spinner
@@ -419,7 +438,7 @@
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Alamat"
-                        android:textSize="12sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -429,7 +448,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/bgtwo"
                         android:hint="Masukan Alamat"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins_bold"
                         android:inputType="textPostalAddress"
@@ -460,7 +479,7 @@
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
                             android:text="Nomor Rumah"
-                            android:textSize="12sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <EditText
@@ -470,7 +489,7 @@
                             android:background="@drawable/bgtwo"
                             android:inputType="number"
                             android:maxLines="1"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:fontFamily="@font/poppins_bold"
                             android:paddingStart="5dp" />
                     </LinearLayout>
@@ -488,7 +507,7 @@
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
                             android:text="Blok Rumah"
-                            android:textSize="12sp"
+                            android:textSize="15sp"
                             android:textStyle="bold"/>
 
                         <EditText
@@ -500,7 +519,7 @@
                             android:maxLines="1"
                             android:paddingStart="5dp"
                             android:fontFamily="@font/poppins_bold"
-                            android:textSize="12sp"
+                            android:textSize="14sp"
                             android:textAllCaps="true" />
 
                     </LinearLayout>

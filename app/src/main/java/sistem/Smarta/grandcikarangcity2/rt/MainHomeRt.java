@@ -15,6 +15,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -30,9 +31,15 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -61,6 +68,7 @@ import sistem.Smarta.grandcikarangcity2.rtpintar.warga.HomeWarga;
 public class MainHomeRt extends AppCompatActivity {
     String nilai,level,nik,id_rt,desa,laporan,title,idrt;
     ArrayList<String>agus,ferdian;
+    Handler handler;
     Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     int satu, dua;
     @Override
@@ -70,18 +78,26 @@ public class MainHomeRt extends AppCompatActivity {
         SharedPreferences sahres = getSharedPreferences("blood", Context.MODE_PRIVATE);
         String isiid=sahres.getString("ide","empty");
         id_rt=isiid;
+        handler = new Handler();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.homebar,R.id.pembayaran)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
+        getdatartoke(id_rt);
         onResume();
     }
     public void onResume() {
 
         super.onResume();
-        getdatartoke(id_rt);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getdatartoke(id_rt);
+            }
+        }, 10000);
+
     }
 
     private void getlaporanwarga() {
@@ -123,7 +139,20 @@ public class MainHomeRt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainHomeRt.this, "Jaringan Bermasalah Harap Periksa Jaringan Anda"+error.toString(), Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+                }
             }
         }){
         };
@@ -170,7 +199,20 @@ public class MainHomeRt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainHomeRt.this, "Jaringan Bermasalah Harap Periksa Jaringan Anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+                }
             }
         }){
         };
@@ -278,7 +320,20 @@ public class MainHomeRt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Username Belum Terdaftar" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+                }
             }
         }){
         };
@@ -323,7 +378,20 @@ public class MainHomeRt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainHomeRt.this, "Jaringan Gagal Tolong Periksa Jaringan Anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+                }
             }
         }){
         };
@@ -361,7 +429,20 @@ public class MainHomeRt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Username Atau Password Salah" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+                }
             }
         }){
 
@@ -386,13 +467,12 @@ public class MainHomeRt extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final AlertDialog.Builder alert= new AlertDialog.Builder(MainHomeRt.this);
-        alert.setTitle("Anda Yakin Ingin Kembali Ke Menu RT Manajement?");
+        alert.setTitle("Anda Yakin Ingin Kembali Ke Aplikasi Kabupaten Kebumen ?");
         alert.setCancelable(false);
-
         alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                off(nilai);
+               finish();
             }
         });
         alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {

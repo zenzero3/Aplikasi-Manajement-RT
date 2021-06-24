@@ -106,7 +106,7 @@ public class KasRT extends AppCompatActivity {
         initMidtransSdk();
         gettranssaksi();
         this.handler = new Handler();
-        this.handler.postDelayed(m_Runnable,5000);
+        this.handler.postDelayed(m_Runnable,10000);
     }
     private final Runnable m_Runnable = new Runnable()
     {
@@ -115,7 +115,7 @@ public class KasRT extends AppCompatActivity {
         {
             gettranssaksi();
 
-            handler.postDelayed(m_Runnable, 10000);
+            handler.postDelayed(m_Runnable, 50000);
         }
 
     };

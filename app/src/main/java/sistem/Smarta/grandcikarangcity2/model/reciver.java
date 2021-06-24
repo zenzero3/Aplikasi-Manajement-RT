@@ -50,7 +50,6 @@ List<String>dwi;
 
                             if (message.equals("Data berhasil diubah")) {
                                 if (success.equals("true")) {
-                                    Toast.makeText(context, "sucssess", Toast.LENGTH_SHORT).show();
                                 }
                             }else {
                                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();

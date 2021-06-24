@@ -138,18 +138,18 @@ public class Pollingwarga extends AppCompatActivity {
                 String aku =namapolling.getText().toString();
                 String dua = des.getText().toString();
                 if (aku.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Nama Poling Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
-                    namapolling.setError("Nama Polling Kosong");
+                    Toast.makeText(getApplicationContext(),"Nama Informasi Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    namapolling.setError("Nama Informasi Kosong");
                 }else if (dua.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Deskripsi Tidak boleh Kosong",Toast.LENGTH_LONG).show();
                     des.setError("Deskripsi Kosong");
                 }else if (progessone.equals("Pilih Kategori Poling")){
-                    Toast.makeText(getApplicationContext(),"Pilih Kategori Poling",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Pilih Kategori Informasi",Toast.LENGTH_LONG).show();
                 }else if (progesstwo.equals("Pilih Penerima Poling Berdasarkan Jenis Kelamin")){
                     Toast.makeText(getApplicationContext(),"Pilih Penerima Poling",Toast.LENGTH_LONG).show();
                 }else if (progessone.equals("Agama")){
                     if (progesstwo.equals("Pilih Penerima Poling Berdasarkan Jenis Kelamin")){
-                        Toast.makeText(getApplicationContext(),"Pilih Penerima Poling",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Pilih Penerima Informasi",Toast.LENGTH_LONG).show();
                     } else {
                     postdataagam();
                     }
@@ -324,21 +324,38 @@ public class Pollingwarga extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data!=null){
         if(resultCode != RESULT_CANCELED){
             if (requestCode == 2) {
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
                 ekoa=photo;
                 tambah.setImageBitmap(ekoa);
                 lala.setVisibility(View.GONE);
+                }else {
+                    lala.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
+                }
 
             }
             if (requestCode == 1)
             {
                 Uri selectedImage = data.getData();
+                if (selectedImage!=null){
                 dwi=selectedImage;
                 tambah.setImageURI(dwi);
                 lala.setVisibility(View.GONE);
             }
+                else {
+                    lala.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Galerry",Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Batal Ambil Gambar ",Toast.LENGTH_LONG).show();
+            lala.setVisibility(View.GONE);
         }
     }
 

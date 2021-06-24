@@ -223,7 +223,7 @@ public class Step3 extends Fragment implements Step, BlockingStep {
             }
         }
     }else {
-            Toast.makeText(requireContext(),"Gagal ambil foto",Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(),"Gagal ambil foto Harap ulangi lagi",Toast.LENGTH_LONG).show();
         }
     }
     @Override

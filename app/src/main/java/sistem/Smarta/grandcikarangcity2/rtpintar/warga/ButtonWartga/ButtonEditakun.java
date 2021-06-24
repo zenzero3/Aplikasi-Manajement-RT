@@ -7,12 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,6 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -53,6 +56,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import kotlin.text.Regex;
 import sistem.Smarta.grandcikarangcity2.R;
 import sistem.Smarta.grandcikarangcity2.model.AppHelper;
 import sistem.Smarta.grandcikarangcity2.model.VolleyMultipartRequest;
@@ -68,6 +72,7 @@ public class ButtonEditakun extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener datell;
     int i = 0;
     String idem;
+    Regex regex;
     Spinner pendikkk,pernikk,tempatlahir,statustempat,jke,ker;
     String nmdesa,nix,namaleng,mailx,jk,hp,agam,lahir,tgllhir,statusper,kerja,pendik,tinggal,almleng,
             idkk,noblok,desaku, gambarpasang,id,idkepalaoke;
@@ -248,15 +253,30 @@ public class ButtonEditakun extends AppCompatActivity {
 
 
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                regex =new Regex("^08[0-9]{9,}$");
                SharedPreferences preferences = getSharedPreferences("blood",MODE_PRIVATE);
                 String id = preferences.getString("ide","Empty");
-                getdata(id);
                 almleng =editlahireditalamatleng.getEditText().getText().toString();
                 namaleng=edtnamle.getEditText().getText().toString();
                 mailx =editmail.getEditText().getText().toString();
                 hp = edithp.getEditText().getText().toString();
+                if (regex.toPattern().matcher(hp).matches()){
+                    if (Patterns.EMAIL_ADDRESS.matcher(mailx).matches()){
+                        if (almleng.equals("")){
+                            Toast.makeText(getApplicationContext(),"Alamat Tidak boleh Kosong",Toast.LENGTH_LONG).show();
+                        }else if (namaleng.equals("")){
+                            Toast.makeText(getApplicationContext(),"Nama Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                        }
+                        getdata(id);
+                    }
+
+                }else {
+                    Toast.makeText(getApplicationContext(),"Format No Telp salah",Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
@@ -745,23 +765,35 @@ public class ButtonEditakun extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if (data!=null){
         if(resultCode != RESULT_CANCELED){
-            if (requestCode == 2) {
-                Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
-                lion.setImageBitmap(photo);
-            }
             if (requestCode == 1)
             {
                 Uri selectedImage = data.getData();
+                if (selectedImage!=null){
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
+                    InputStream inputStream = getContentResolver().openInputStream(selectedImage);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     lion.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
+            }else {
+                Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Galerry",Toast.LENGTH_LONG).show();
+            }
+            if (requestCode == 2) {
+                Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+                if (photo!=null){
+                lion.setImageBitmap(photo);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }
+        }else {
         }
     }
     private void getkerja() {

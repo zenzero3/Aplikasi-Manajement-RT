@@ -115,6 +115,7 @@
                     android:fontFamily="@font/hk"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:textSize="15sp"
                     android:text="faafa@gmail.com" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,6 +134,7 @@
                     android:fontFamily="@font/hk"
                     android:inputType="textPersonName"
                     android:maxLines="1"
+                    android:textSize="15sp"
                     android:text="jamaludin" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,6 +166,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bgtwo"
                 android:hint="Edit No Hp"
+                android:textSize="15sp"
                 app:hintTextColor="@color/grey_100_">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -188,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="Edit Agama"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/agama"
@@ -209,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="Edit Tempat Lahir"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/edttempatlahir"
@@ -232,6 +235,7 @@
                     android:focusable="false"
                     android:fontFamily="@font/hk"
                     android:inputType="date"
+                    android:textSize="15sp"
                     android:maxLines="1"
                     android:text="DD/MM/YY" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -249,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="Edit Status Pernikahan"
-                    android:textSize="12sp" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/editstatuspernikahan"
@@ -333,6 +337,7 @@
                     android:fontFamily="@font/hk"
                     android:inputType="textPostalAddress"
                     android:maxLength="25"
+                    android:textSize="15sp"
                     android:maxLines="2"
                     android:text="jamaludin" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -349,6 +354,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="144dp"
         android:layout_marginTop="23dp"
+        android:textSize="15sp"
         android:text="Simpan" />
 
     <ProgressBar

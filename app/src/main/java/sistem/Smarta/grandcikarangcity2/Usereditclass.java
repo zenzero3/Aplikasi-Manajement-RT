@@ -77,6 +77,7 @@ public class Usereditclass  extends AppCompatActivity {
     private int camera = 1;
     String path,idem,gambarpasang,id_image;
     SharedPreferences preferences,leo;
+    ProgressDialog progressBar;
     String ide,usernames , pass, namas ,emails,nohps,linkid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +90,7 @@ public class Usereditclass  extends AppCompatActivity {
         email= findViewById(R.id.useredit);
         Button ek = findViewById(R.id.simpen);
         pase = findViewById(R.id.userpassword);
+        progressBar = new ProgressDialog(Usereditclass.this);
         noh = findViewById(R.id.usertelp);
         namalengkapo = findViewById(R.id.usernama);
          preferences = getSharedPreferences("blood",MODE_PRIVATE);
@@ -186,7 +188,6 @@ public class Usereditclass  extends AppCompatActivity {
 
     private void getdatauser(String id) {
         String UrlLogin="http://gccestatemanagement.online/public/api/register/"+id;
-        final ProgressDialog progressBar = new ProgressDialog(Usereditclass.this);
         progressBar.setMessage("Prosess");
         progressBar.show();
         StringRequest stringRequest= new StringRequest(Request.Method.GET, UrlLogin,
@@ -223,7 +224,7 @@ public class Usereditclass  extends AppCompatActivity {
                                     pase.getEditText().setText(pass);
                                     getimageurl(emage);
                                     Log.d("isi",emage);
-                                    progressBar.dismiss();
+
 
                                 }
                             }else {
@@ -377,9 +378,6 @@ public class Usereditclass  extends AppCompatActivity {
 
 
     private void getimageurl(final String id) {
-        final ProgressDialog progressBar = new ProgressDialog(Usereditclass.this);
-        progressBar.setMessage("Loadding....");
-        progressBar.show();
         String UrlLogin="http://gccestatemanagement.online/public/api/image/"+id;
         StringRequest stringRequest= new StringRequest(Request.Method.GET, UrlLogin,
                 new Response.Listener<String>() {
@@ -394,6 +392,10 @@ public class Usereditclass  extends AppCompatActivity {
 
                             if (status.equals("get")) {
                                 if (message.equals("Get data")) {
+                                    int isigambar = jsonarray.length();
+                                    if (isigambar == 0) {
+                                        progressBar.dismiss();
+                                    }else {
                                     for(int i=0; i < jsonarray.length(); i++) {
                                         JSONObject jonobject = jsonarray.getJSONObject(i);
                                         idem=jonobject.getString("id").trim();
@@ -409,6 +411,7 @@ public class Usereditclass  extends AppCompatActivity {
                                     progressBar.dismiss();
 
                                 }
+                            }
                             }else {
                                 Toast.makeText(Usereditclass.this, message, Toast.LENGTH_SHORT).show();
                             }
@@ -528,6 +531,8 @@ if (data!=null){
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                }else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Galerry",Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -535,6 +540,8 @@ if (data!=null){
                 Bitmap photo = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
                 if (photo!=null){
                 aku.setImageBitmap(photo);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Batal Ambil Gambar dari Kamera",Toast.LENGTH_LONG).show();
                 }
             }
         }

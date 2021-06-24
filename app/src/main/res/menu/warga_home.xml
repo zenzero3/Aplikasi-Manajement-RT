@@ -13,5 +13,5 @@
         android:title="Profil" />
     <item
         android:id="@+id/back"
-        android:title="RT Manajement" />
+        android:title="Aplikasi Kabupaten Kebumen" />
 </menu>

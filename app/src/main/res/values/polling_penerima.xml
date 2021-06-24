@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Pollingpenerima">
-        <item>Pilih Penerima Polling Berdasarkan Jenis Kelamin</item>
+        <item>Pilih Penerima Informasi Berdasarkan Jenis Kelamin</item>
         <item>Laki-Laki</item>
         <item>Perempuan</item>
         <item>Semua Jenis Kelamin</item>

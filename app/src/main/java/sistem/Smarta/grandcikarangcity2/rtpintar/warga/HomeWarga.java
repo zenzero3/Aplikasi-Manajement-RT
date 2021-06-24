@@ -33,9 +33,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -65,6 +71,8 @@ public class HomeWarga extends AppCompatActivity  implements NavigationView.OnNa
     int laporan,surat;
     List <String>ferdian,agus;
     String idrt;
+    Handler handler;
+    int one ;
     Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
     SharedPreferences sharedPreferences;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -82,25 +90,40 @@ public class HomeWarga extends AppCompatActivity  implements NavigationView.OnNa
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         title = findViewById(R.id.koptitle);
+        handler = new Handler();
         sharedPreferences=getSharedPreferences("blood", MODE_PRIVATE);
         nik=sharedPreferences.getString("ide","null");
         onResume();
+        one = 2;
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.bb,R.string.cc);
         drawer.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
         nav_view.setNavigationItemSelectedListener(this);
-        fragmentManager =getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.contenwarga,new wargahome());
-        fragmentTransaction.commit();
-
+        if (one==2) {
+            fragmentManager =getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contenwarga,new wargahome());
+            fragmentTransaction.commit();
+            title.setText("Menu Utama");
+        }else {
+            fragmentManager =getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contenwarga,new pesanwarga());
+            fragmentTransaction.commit();
+            title.setText("Pesan");
+        }
         
     }
 
    public void onResume(){
         super.onResume();
-       wargadata(nik);
+       handler.postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               wargadata(nik);
+           }
+       },50000 );
    }
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -121,7 +144,7 @@ public class HomeWarga extends AppCompatActivity  implements NavigationView.OnNa
     @Override
     public void onBackPressed() {
         final AlertDialog.Builder alert= new AlertDialog.Builder(HomeWarga.this);
-        alert.setTitle("Anda Yakin Ingin Kembali Ke Menu RT Manajement?");
+        alert.setTitle("Anda Yakin Ingin Kembali Ke Aplikasi Kabupaten Kebumen?");
         alert.setCancelable(false);
 
         alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
@@ -170,7 +193,7 @@ public class HomeWarga extends AppCompatActivity  implements NavigationView.OnNa
         }
         if (item.getItemId()==R.id.back){
             final AlertDialog.Builder alert= new AlertDialog.Builder(HomeWarga.this);
-            alert.setTitle("Anda Yakin Ingin Kembali Ke Menu RT Manajement");
+            alert.setTitle("Anda Yakin Ingin Kembali Ke Aplikasi Kabupaten Kebumen ?");
             alert.setCancelable(false);
 
             alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
@@ -267,7 +290,23 @@ public class HomeWarga extends AppCompatActivity  implements NavigationView.OnNa
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomeWarga.this, "Jaringan Bermasalah Harap Periksa Jaringan Anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(getApplicationContext(),"Maaf Jaringan sibut mohon menunggu beberapa saat ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                } else if (error instanceof ParseError) {
+                    finish();
+                }
             }
         }){
         };

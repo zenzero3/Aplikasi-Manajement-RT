@@ -85,7 +85,7 @@ public class Adapterlistpollingrt extends RecyclerView.Adapter<Adapterlistpollin
                 @Override
                 public void onClick(View v) {
                     tiga.setVisibility(View.GONE);
-                    satuoke.setVisibility(View.VISIBLE);
+                    satuoke.setVisibility(View.GONE);
                     empat.setVisibility(View.VISIBLE);
                     dua.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                 }

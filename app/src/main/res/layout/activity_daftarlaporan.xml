@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eko"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -17,31 +17,40 @@
         android:weightSum="2">
 
         <ImageButton
-            android:id="@+id/backbuttwarga"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/backbutt"
+            android:layout_width="51dp"
+            android:layout_height="0dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_weight="0.5"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/chevron_left" />
+            android:src="@drawable/chevron_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:text="Laporan Warga"
-            android:ems="11"
+            android:layout_toEndOf="@+id/backbutt"
+            android:padding="@dimen/spacing_medium"
+            android:text="  Daftar laporan"
             android:textColor="#F3F0F0"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.37"
+            app:layout_constraintStart_toEndOf="@+id/backbutt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:visibility="visible"

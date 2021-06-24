@@ -26,7 +26,7 @@ android {
     }
     productFlavors {
         sandbox {
-            buildConfigField "String", "BASE_URL", "\"https://demoaplikasirentalmobil.com/midtrans/index.php/\""
+            buildConfigField "String", "BASE_URL", "\"http://gccestatemanagement.online/public/midtrans.php/\""
             buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-P_0oXKjaYU7-VQq1\""
         }
     }

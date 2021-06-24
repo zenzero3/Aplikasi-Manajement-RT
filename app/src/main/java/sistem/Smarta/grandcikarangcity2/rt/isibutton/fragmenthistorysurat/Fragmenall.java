@@ -15,9 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -48,7 +54,6 @@ public class Fragmenall extends Fragment {
         View v = inflater.inflate(R.layout.fragmeentallhistorysurat, container, false);
         SharedPreferences share = this.getActivity().getSharedPreferences("share", Context.MODE_PRIVATE);
          getId=share.getString("id",null);
-       layoutManager = new LinearLayoutManager(requireContext());
         getRt(getId);
         lottieAnimationView = v.findViewById(R.id.notfound2);
         this.handler = new Handler();
@@ -133,23 +138,22 @@ public class Fragmenall extends Fragment {
                                       lottieAnimationView.setVisibility(View.VISIBLE);
                                     }else {
                                         lottieAnimationView.setVisibility(View.GONE);
+                                        for (int i = 0;i<jsonArray.length();i++){
+                                            JSONObject data = jsonArray.getJSONObject(i);
+                                            DataPengajuan iurandesa = new DataPengajuan();
+                                            iurandesa.setId(data.getString("id"));
+                                            iurandesa.setNamasurat(data.getString("namapengajuan"));
+                                            iurandesa.setNamawarga(data.getString("nama_warga"));
+                                            iurandesa.setStatus(data.getString("status"));
+                                            dataPengajuans.add(iurandesa);
+                                        }
+                                        final AdapterPengajuanall adapterPengajuanall= new AdapterPengajuanall(requireContext(),(ArrayList<DataPengajuan>)dataPengajuans);
+                                        layoutManager = new LinearLayoutManager(getContext());
+                                        re= getActivity().findViewById(R.id.inione);
+                                        re.setLayoutManager(layoutManager);
+                                        re.setAdapter(adapterPengajuanall);
+                                        adapterPengajuanall.notifyDataSetChanged();
                                     }
-                                    for (int i = 0;i<jsonArray.length();i++){
-                                        JSONObject data = jsonArray.getJSONObject(i);
-                                         DataPengajuan iurandesa = new DataPengajuan();
-                                         iurandesa.setId(data.getString("id"));
-                                        iurandesa.setNamasurat(data.getString("namapengajuan"));
-                                        iurandesa.setNamawarga(data.getString("nama_warga"));
-                                        iurandesa.setStatus(data.getString("status"));
-                                        dataPengajuans.add(iurandesa);
-                                    }
-                                    layoutManager = new LinearLayoutManager(getContext());
-                                    re= getActivity().findViewById(R.id.inione);
-                                    re.setLayoutManager(layoutManager);
-                                    final AdapterPengajuanall adapterPengajuanall= new AdapterPengajuanall(requireContext(),(ArrayList<DataPengajuan>)dataPengajuans);
-                                    re.setAdapter(adapterPengajuanall);
-                                    adapterPengajuanall.notifyDataSetChanged();
-
                                 }
 
                             }else {
@@ -163,7 +167,22 @@ public class Fragmenall extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(requireContext(), "Jaringan Bermasalah Harap Periksa Jaringan Anda" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    onPause();
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat",
+                            Toast.LENGTH_LONG).show();
+                    getActivity().finish();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                } else if (error instanceof ParseError) {
+
+                }
             }
         }){
         };

@@ -148,7 +148,7 @@ public class fragmentone extends Fragment implements Step, BlockingStep, Adapter
                     }
 
                 }
-            }, 5000L);
+            }, 1000);
         }
     }
 
@@ -160,7 +160,7 @@ public class fragmentone extends Fragment implements Step, BlockingStep, Adapter
                 callback.complete();
                 Toast.makeText(requireContext(), "onCompleted!", Toast.LENGTH_SHORT).show();
             }
-        }, 2000L);
+        }, 1000);
     }
 
     @Override

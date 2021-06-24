@@ -93,7 +93,7 @@
                         android:maxLength="10"
                         android:text="Date"
                         android:textColor="@color/colorbackld"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,7 +108,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Nama Dana"
                         android:textColor="@color/colorbackld"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/nomame"
@@ -134,7 +134,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Nominal"
                         android:textColor="@color/colorbackld"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/nomin"
@@ -161,7 +161,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Status"
                         android:textColor="@color/colorbackld"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/statuskelar"
@@ -192,12 +192,14 @@
                 android:layout_weight="1"
                 android:background="@drawable/bgtwo"
                 android:text="Cek Pembayaran"
+                android:textSize="15sp"
                 android:theme="@style/Widget.AppCompat.Button" />
             <Button
                 android:id="@+id/cekdua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="15sp"
                 android:background="@drawable/bgtwo"
                 android:text="cek metode pembayaran"
                 android:theme="@style/Widget.AppCompat.Button" />

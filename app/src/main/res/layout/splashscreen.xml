@@ -15,7 +15,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="134dp"
         android:layout_marginEnd="26dp"
-        android:src="@drawable/sambasa" />
+        android:src="@drawable/kebumenlogo" />
 
     <com.github.ybq.android.spinkit.SpinKitView
         style="@style/SpinKitView.WanderingCubes"

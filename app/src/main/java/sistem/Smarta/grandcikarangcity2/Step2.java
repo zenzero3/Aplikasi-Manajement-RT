@@ -131,6 +131,7 @@ public class Step2 extends Fragment implements Step, BlockingStep, AdapterView.O
             return;
         }
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            one = 2;
             Task<Location> task = lokasi.getLastLocation();
             task.addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
@@ -138,7 +139,7 @@ public class Step2 extends Fragment implements Step, BlockingStep, AdapterView.O
                     if (location != null) {
                         Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                         try {
-                            one = 2;
+
                             final List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                             namalokasi = addresses.get(0).getAddressLine(0);
                             lat = location.getLatitude();

@@ -37,6 +37,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import sistem.Smarta.grandcikarangcity2.rt.MainHomeRt;
 import sistem.Smarta.grandcikarangcity2.rtpintar.Registerrtpintar_RT;
@@ -50,7 +51,8 @@ public class Homefragment extends Fragment {
     ImageButton laporan,pan,pintarklik,history;
 TextView user;
     SharedPreferences sahre;
-    Handler handler;
+    Handler handler;   SharedPreferences preferences;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,11 +61,11 @@ TextView user;
         pan = view.findViewById(R.id.panic);
          laporan = view.findViewById(R.id.lapor);
          handler = new Handler();
+        preferences  = requireActivity().getSharedPreferences("blood", MODE_PRIVATE);
          ImageButton bayarke = view.findViewById(R.id.pembayaran);
         ImageSlider imageSlider = view.findViewById(R.id.image_slider);
          pintarklik = view.findViewById(R.id.pinter);
          user= view.findViewById(R.id.usernameok);
-        onResume();
         ArrayList<SlideModel> slideModels = new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.iklan));
         slideModels.add(new SlideModel(R.drawable.gjj));
@@ -129,7 +131,6 @@ history.setOnClickListener(new View.OnClickListener() {
     }
     public void onResume() {
         super.onResume();
-        getdatax();
         getPrefs();
     }
     private void getPrefs() {
@@ -137,7 +138,7 @@ history.setOnClickListener(new View.OnClickListener() {
 
     }
     private void getdatax(){
-        SharedPreferences preferences = getActivity().getSharedPreferences("blood", MODE_PRIVATE);
+
         String id = preferences.getString("ide","Empty");
         getdatauser(id);
 
@@ -168,7 +169,7 @@ history.setOnClickListener(new View.OnClickListener() {
                                     String email = data.getString("email").trim();
                                     String emage = data.getString("id_image").trim();
 
-                                    user.setText("Username \n"+usere);
+                                    user.setText(usere);
 
                                     Log.d("isi",emage);
                                     progressBar.dismiss();
@@ -176,6 +177,7 @@ history.setOnClickListener(new View.OnClickListener() {
                                 }
                             }else {
                                 Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
+                                progressBar.dismiss();
                             }
                         } catch (JSONException e){
                             e.printStackTrace();
@@ -192,14 +194,13 @@ history.setOnClickListener(new View.OnClickListener() {
                 } else if (error instanceof AuthFailureError) {
 
                 } else if (error instanceof ServerError) {
-                    onPause();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             onResume();
                         }
-                    },30000);
-                    Toast.makeText(requireContext(),"Maaf Jaringan sibut mohon menunggu beberapa saat",
+                    },50000);
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat",
                             Toast.LENGTH_LONG).show();
                     progressBar.dismiss();
                 } else if (error instanceof NetworkError) {
@@ -259,15 +260,34 @@ history.setOnClickListener(new View.OnClickListener() {
                             }
                         } catch (JSONException e){
                             e.printStackTrace();
-                            progressBar.dismiss();
-                            Toast.makeText(requireContext(), "Periksa Koneksi Anda" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.dismiss();
-                Toast.makeText(requireContext(), "Jaringan Error Mohon Ulangi beberapa saat lagi" , Toast.LENGTH_SHORT).show();
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof AuthFailureError) {
+
+                } else if (error instanceof ServerError) {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                          cekdata();
+                        }
+                    },30000);
+                    Toast.makeText(requireContext(),"Maaf Jaringan sibuk mohon menunggu beberapa saat",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(requireContext(),"Mohon Periksa jaringan anda",
+                            Toast.LENGTH_LONG).show();
+                    progressBar.dismiss();
+                } else if (error instanceof ParseError) {
+                    progressBar.dismiss();
+                }
 
             }
         }){
