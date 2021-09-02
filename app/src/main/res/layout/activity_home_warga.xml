@@ -50,7 +50,9 @@
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_wargahome" />
+        <include
+            layout="@layout/content_wargahome"
+            android:visibility="visible" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

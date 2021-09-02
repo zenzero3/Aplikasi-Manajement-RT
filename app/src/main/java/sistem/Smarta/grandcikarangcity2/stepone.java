@@ -146,7 +146,7 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
                         Uri uri = Uri.fromParts("package",getActivity().getPackageName(),null);
                         intent.setData(uri);
                         startActivity(intent);
-                        getActivity().finish();
+                        getlocation();
                     }
                 })
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -154,6 +154,7 @@ public class stepone extends Fragment implements Step, BlockingStep, AdapterView
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         getActivity().finish();
+
                     }
                 })
                 .create().show();

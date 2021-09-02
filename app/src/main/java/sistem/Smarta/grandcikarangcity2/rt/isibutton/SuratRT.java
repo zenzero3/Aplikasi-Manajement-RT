@@ -53,7 +53,7 @@ public class SuratRT extends AppCompatActivity {
     TextView date;
     ArrayList<suratwarga> surat;
     ArrayList<String> proving;
-    String rtid,nikoko,data,ajukan,niname;
+    String rtid,nikoko,data,ajukan,niname,koskk;
     SharedPreferences sahres;
 
     DatePickerDialog.OnDateSetListener datell;
@@ -139,6 +139,11 @@ public class SuratRT extends AppCompatActivity {
 
 
     private void senddatapengajuanrt() {
+        Log.d("nik",nikoko);
+        Log.d("idri",rtid);
+        Log.d("tanggalpakai",data);
+        Log.d("pengajuan",ajukan);
+        Log.d("namawarga",niname);
         String UrlLogin="http://gccestatemanagement.online/public/api/suratrt";
         StringRequest stringRequest= new StringRequest(Request.Method.POST, UrlLogin,
                 new Response.Listener<String>() {
@@ -176,6 +181,7 @@ public class SuratRT extends AppCompatActivity {
                 params.put("id_rt", rtid);
                 params.put("tanggal_pakai",data);
                 params.put("namapengajuan",ajukan);
+                params.put("kk",koskk);
                 params.put("nama_warga",niname);
                 return params;
             }};
@@ -249,7 +255,8 @@ public class SuratRT extends AppCompatActivity {
                                         String id = data.getString("id").trim();
                                         String warganeme= data.getString("nama_lengkap").trim();
                                         String nice = data.getString("nik").trim();
-                                        surat.add(new suratwarga(id,warganeme,nice));
+                                        String kos  = data.getString("nkk").trim();
+                                        surat.add(new suratwarga(id,warganeme,nice,kos));
                                     }
                                     for (int i =0;i<surat.size();i++){
                                         proving.add(surat.get(i).pname);
@@ -266,6 +273,7 @@ public class SuratRT extends AppCompatActivity {
                                             String idm =  surat.get(sit.getSelectedItemPosition()).pid;
                                             nikoko =surat.get(sit.getSelectedItemPosition()).niko;
                                             niname = surat.get(sit.getSelectedItemPosition()).pname;
+                                            koskk = surat.get(sit.getSelectedItemPosition()).kk;
                                             Log.d("TAG", nikoko+niname);
                                         }
 

@@ -526,7 +526,7 @@ public class Login  extends AppCompatActivity {
         getpermission();
         final String user = username.getText().toString().trim();
         final String pass = password.getText().toString().trim();
-            String UrlLogin="http://gccestatemanagement.online/public/api/login";
+            String UrlLogin="http:/gccestatemanagement.online/public/api/login";
        StringRequest stringRequest= new StringRequest(Request.Method.POST, UrlLogin,
                new Response.Listener<String>() {
                    @Override
@@ -571,7 +571,8 @@ public class Login  extends AppCompatActivity {
                }, new Response.ErrorListener() {
            @Override
            public void onErrorResponse(VolleyError error) {
-               Toast.makeText(Login.this, "Username Atau Password Salah" , Toast.LENGTH_SHORT).show();
+               error.printStackTrace();
+               Toast.makeText(Login.this, "Username Atau Password Salah"+error , Toast.LENGTH_SHORT).show();
            }
        }){
            @Override
@@ -629,6 +630,7 @@ public class Login  extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
                 Toast.makeText(Login.this, "Username Atau Password Salah" , Toast.LENGTH_SHORT).show();
             }
         });

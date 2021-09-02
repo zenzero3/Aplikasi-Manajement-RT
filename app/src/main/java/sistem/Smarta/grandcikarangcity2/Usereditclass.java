@@ -112,22 +112,22 @@ public class Usereditclass  extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     user.setError("Username Kosong");
                 }else if (pass.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Password Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     pase.setError("password Kosong");
                 }else if (namas.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Nama Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     namalengkapo.setError("Nama lengkap Tidak Boleh Kosong");
                 }else if (emails.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Email Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     email.setError("Email Kosong");
                 }else if (nohps.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"No Hp Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     noh.setError("NO hp Kosong");
                 }else if (emails.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Email Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     noh.setError("NO hp Kosong");
                 }else if (nohps.equals("")){
-                    Toast.makeText(getApplicationContext(),"Username Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"No Hp Tidak Boleh Kosong",Toast.LENGTH_LONG).show();
                     noh.setError("NO hp Kosong");
                 }else if (Patterns.EMAIL_ADDRESS.matcher(email.getEditText().getText().toString()).matches()) {
                     if (regex.toPattern().matcher(noh.getEditText().getText().toString()).matches()) {

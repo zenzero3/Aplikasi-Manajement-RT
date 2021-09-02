@@ -270,6 +270,7 @@
                     android:layout_marginBottom="15dp"
                     android:background="@drawable/bgtwo"
                     app:auto_cycle="true"
+                    app:corner_radius="23"
                     app:delay="0"
                     app:period="5000" />
             </LinearLayout>
